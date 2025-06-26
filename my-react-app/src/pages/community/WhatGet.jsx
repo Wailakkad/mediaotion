@@ -1,204 +1,227 @@
 import { motion, useInView } from 'framer-motion';
 import { useState, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Share2, PenTool } from 'lucide-react';
-
+import { Share2, PenTool, BarChart3, Users, ArrowRight } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 export default function FeaturesGrid() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const {t} = useTranslation();
   const ref = useRef(null);
-  const navigate = useNavigate();
   const inView = useInView(ref, {
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const features = [
-    {
-      id: 'updates',
-      title: 'Gestion de Réseaux Sociaux',
-      icon: (
-        <svg width="80" height="80" viewBox="0 0 200 200" className="mx-auto mb-4">
-          <g transform="translate(20, 0)">
-            {/* Social Media Icons */}
-            <circle cx="80" cy="80" r="35" fill="#1877F2" /> {/* Facebook */}
-            <text x="80" y="90" fontSize="40" fill="white" textAnchor="middle">f</text>
-            <circle cx="40" cy="80" r="35" fill="#E4405F" /> {/* Instagram */}
-            <rect x="20" y="60" width="40" height="40" rx="10" fill="none" stroke="white" strokeWidth="4" />
-            <circle cx="40" cy="80" r="10" fill="none" stroke="white" strokeWidth="4" />
-            <circle cx="55" cy="65" r="5" fill="white" />
-          </g>
-        </svg>
-      ),
-      color: 'border-blue-200 bg-blue-50',
-      hover: 'hover:border-blue-300 hover:bg-blue-100'
-    },
-    {
-      id: 'secure',
-      title: 'Publications Hebdomadaires',
-      icon: <Share2 size={40} className="mx-auto mb-2" />,
-      secondaryIcon: <PenTool size={30} className="absolute top-4 right-4 text-pink-400" />,
-      color: 'border-pink-200 bg-pink-50',
-      hover: 'hover:border-pink-300 hover:bg-pink-100'
-    },
-    {
-      id: 'responsive',
-      title: 'Création Graphique',
-      icon: (
-        <svg width="80" height="80" viewBox="0 0 200 200" className="mx-auto mb-4">
-          <g transform="translate(30, 20)">
-            {/* Palette */}
-            <circle cx="70" cy="80" r="50" fill="#f0f0f0" stroke="#d0d0d0" strokeWidth="2" />
-            
-            {/* Color Dots */}
-            <circle cx="50" cy="60" r="15" fill="#FF5733" />
-            <circle cx="90" cy="60" r="15" fill="#33FF57" />
-            <circle cx="50" cy="100" r="15" fill="#3357FF" />
-            <circle cx="90" cy="100" r="15" fill="#F3FF33" />
-            
-            {/* Brush */}
-            <rect x="110" y="40" width="10" height="60" rx="2" fill="#8B4513" />
-            <path d="M110,40 Q120,30 130,40 L130,60 Q120,70 110,60 Z" fill="#F5DEB3" />
-          </g>
-        </svg>
-      ),
-      color: 'border-purple-200 bg-purple-50',
-      hover: 'hover:border-purple-300 hover:bg-purple-100'
-    },
-    {
-      id: 'support',
-      title: 'Stratégie Social Media',
-      icon: (
-        <svg width="80" height="80" viewBox="0 0 200 200" className="mx-auto mb-4">
-          <g transform="translate(20, 10)">
-            {/* Chart */}
-            <rect x="50" y="60" width="20" height="70" fill="#4CAF50" />
-            <rect x="80" y="40" width="20" height="90" fill="#2196F3" />
-            <rect x="110" y="70" width="20" height="60" fill="#FF9800" />
-            
-            {/* Growth Arrow */}
-            <path d="M40,120 L130,50 L130,70 L150,70 L130,50 L110,70" fill="none" stroke="#E91E63" strokeWidth="3" />
-            
-            {/* Magnifying Glass */}
-            <circle cx="60" cy="40" r="15" fill="none" stroke="#9C27B0" strokeWidth="3" />
-            <line x1="70" y1="50" x2="80" y2="60" stroke="#9C27B0" strokeWidth="3" />
-          </g>
-        </svg>
-      ),
-      color: 'border-green-200 bg-green-50',
-      hover: 'hover:border-green-300 hover:bg-green-100'
-    }
-  ];
+ const features = [
+  {
+    id: 'social-management',
+    title: t('features.socialManagement.title'),
+    description: t('features.socialManagement.description'),
+    icon: <Users size={32} className="text-white" />,
+    backgroundImage: 'https://i.pinimg.com/736x/95/bf/8d/95bf8d37d7d2954e77a124979abbaaa2.jpg',
+    gradient: 'from-blue-600/90 via-blue-700/85 to-indigo-800/90',
+    glowColor: 'shadow-blue-500/25'
+  },
+  {
+    id: 'weekly-posts',
+    title: t('features.weeklyPosts.title'),
+    description: t('features.weeklyPosts.description'),
+    icon: <Share2 size={32} className="text-white" />,
+    backgroundImage: 'https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    gradient: 'from-pink-600/90 via-pink-700/85 to-rose-800/90',
+    glowColor: 'shadow-pink-500/25'
+  },
+  {
+    id: 'graphic-design',
+    title: t('features.graphicDesign.title'),
+    description: t('features.graphicDesign.description'),
+    icon: <PenTool size={32} className="text-white" />,
+    backgroundImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    gradient: 'from-purple-600/90 via-purple-700/85 to-violet-800/90',
+    glowColor: 'shadow-purple-500/25'
+  },
+  {
+    id: 'strategy',
+    title: t('features.strategy.title'),
+    description: t('features.strategy.description'),
+    icon: <BarChart3 size={32} className="text-white" />,
+    backgroundImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+    gradient: 'from-emerald-600/90 via-emerald-700/85 to-green-800/90',
+    glowColor: 'shadow-emerald-500/25'
+  }
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2
+        staggerChildren: 0.15,
+        delayChildren: 0.2
       }
     }
   };
 
   const cardVariants = {
     hidden: { 
-      y: 50, 
+      y: 60, 
       opacity: 0,
-      scale: 0.9
+      scale: 0.8,
+      rotateX: 15
     },
     visible: { 
       y: 0, 
       opacity: 1,
       scale: 1,
+      rotateX: 0,
       transition: { 
         type: "spring",
-        stiffness: 100,
-        damping: 12,
-        duration: 0.6
-      }
-    },
-    hover: { 
-      y: -5,
-      transition: { 
-        type: "spring",
-        stiffness: 300
-      }
-    }
-  };
-
-  const iconVariants = {
-    hidden: {
-      scale: 0.5,
-      opacity: 0,
-      rotateY: -30
-    },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      rotateY: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        delay: 0.3,
-        duration: 0.7
-      }
-    },
-    hover: { 
-      scale: 1.1,
-      transition: { 
-        type: "spring",
-        stiffness: 300
-      }
-    }
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        duration: 0.5,
-        delay: 0.4
-      }
-    }
-  };
-
-  const headingVariants = {
-    hidden: { opacity: 0, y: -30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10,
+        stiffness: 80,
+        damping: 20,
         duration: 0.8
       }
     }
   };
 
-  const underlineVariants = {
-    hidden: { width: 0 },
-    visible: { 
-      width: "80px",
-      transition: {
-        duration: 0.8,
-        delay: 0.5
+  const cardHoverVariants = {
+    hover: { 
+      y: -12,
+      scale: 1.02,
+      rotateX: -2,
+      transition: { 
+        type: "spring",
+        stiffness: 400,
+        damping: 25
       }
     }
   };
 
+  const overlayVariants = {
+    hidden: { opacity: 0.7 },
+    hover: { 
+      opacity: 0.85,
+      transition: { duration: 0.3 }
+    }
+  };
+
+  const iconVariants = {
+    hidden: {
+      scale: 0,
+      rotate: -180,
+      opacity: 0
+    },
+    visible: {
+      scale: 1,
+      rotate: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 200,
+        damping: 15,
+        delay: 0.3
+      }
+    },
+    hover: { 
+      scale: 1.2,
+      rotate: 5,
+      transition: { 
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const contentVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: 0.4
+      }
+    },
+    hover: {
+      y: -5,
+      transition: { duration: 0.2 }
+    }
+  };
+
+  const headingVariants = {
+    hidden: { opacity: 0, y: -50, scale: 0.8 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        duration: 1
+      }
+    }
+  };
+
+  const underlineVariants = {
+    hidden: { width: 0, opacity: 0 },
+    visible: { 
+      width: "100px",
+      opacity: 1,
+      transition: {
+        duration: 1.2,
+        delay: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const buttonVariants = {
+    hidden: { opacity: 0, scale: 0.8, y: 30 },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        delay: 0.8
+      }
+    },
+    hover: { 
+      scale: 1.05,
+      boxShadow: "0 20px 40px rgba(0,0,0,0.2)",
+      transition: { 
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    },
+    tap: { scale: 0.95 }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-white mt-15" ref={ref}>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4  py-20" ref={ref}>
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-pink-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse" style={{ animationDelay: '4s' }}></div>
+      </div>
+
       <motion.div 
-        className="text-center mb-12"
+        className="text-center mb-16 relative z-10"
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
         variants={headingVariants}
       >
-        <motion.h1 className="text-3xl font-bold mb-3 text-center">What You Get</motion.h1>
+        <motion.h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
+           {t('features.title')}
+        </motion.h1>
+        <motion.p className="text-xl text-gray-600 mb-6 max-w-2xl mx-auto">
+           {t('features.subtitle')}        </motion.p>
         <motion.div 
-          className="h-1 bg-blue-500 mx-auto mb-6"
+          className="h-1.5 bg-gradient-to-r from-pink-500 via-purple-500 to-blue-500 mx-auto rounded-full"
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
           variants={underlineVariants}
@@ -206,7 +229,7 @@ export default function FeaturesGrid() {
       </motion.div>
       
       <motion.div 
-        className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl"
+        className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl relative z-10"
         variants={containerVariants}
         initial="hidden"
         animate={inView ? "visible" : "hidden"}
@@ -214,40 +237,88 @@ export default function FeaturesGrid() {
         {features.map((feature, index) => (
           <motion.div
             key={feature.id}
-            className={`relative rounded-3xl p-6 border ${feature.color} ${feature.hover} transition-colors flex flex-col items-center justify-center h-60`}
+            className="group cursor-pointer"
             variants={cardVariants}
-            custom={index}
             whileHover="hover"
             onHoverStart={() => setHoveredCard(feature.id)}
             onHoverEnd={() => setHoveredCard(null)}
           >
             <motion.div
-              variants={iconVariants}
-              animate={hoveredCard === feature.id ? "hover" : ""}
-              className="relative"
+              className={`relative rounded-3xl overflow-hidden h-80 shadow-xl ${feature.glowColor} backdrop-blur-sm border border-white/20`}
+              variants={cardHoverVariants}
+              style={{
+                backgroundImage: `url(${feature.backgroundImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
             >
-              {feature.icon}
-              {feature.secondaryIcon && (
+              {/* Gradient overlay */}
+              <motion.div
+                className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} backdrop-blur-[1px]`}
+                variants={overlayVariants}
+                initial="hidden"
+                whileHover="hover"
+              />
+              
+              {/* Animated border glow */}
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-white/20 via-transparent to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              {/* Content */}
+              <div className="relative z-10 p-8 h-full flex flex-col justify-center items-center text-center">
                 <motion.div
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={inView ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
-                  transition={{ delay: 0.6 + index * 0.1, duration: 0.4 }}
+                  className="mb-6 p-4 bg-white/20 backdrop-blur-md rounded-2xl border border-white/30"
+                  variants={iconVariants}
+                  animate={hoveredCard === feature.id ? "hover" : ""}
                 >
-                  {feature.secondaryIcon}
+                  {feature.icon}
                 </motion.div>
-              )}
+                
+                <motion.div
+                  variants={contentVariants}
+                  animate={hoveredCard === feature.id ? "hover" : ""}
+                >
+                  <h3 className="text-2xl font-bold text-white mb-3 tracking-tight">
+                    {feature.title}
+                  </h3>
+                  <p className="text-white/90 text-lg leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+                
+                {/* Hover arrow */}
+                <motion.div
+                  className="absolute bottom-6 right-6 opacity-0 group-hover:opacity-100"
+                  initial={{ x: -20, opacity: 0 }}
+                  whileHover={{ x: 0, opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <ArrowRight size={24} className="text-white" />
+                </motion.div>
+              </div>
+              
+              {/* Shine effect */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700">
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent transform -skew-x-12 translate-x-full group-hover:-translate-x-full transition-transform duration-1000" />
+              </div>
             </motion.div>
-            <motion.h3 
-              className="text-xl font-semibold text-center mt-2"
-              variants={titleVariants}
-            >
-              {feature.title}
-            </motion.h3>
           </motion.div>
         ))}
       </motion.div>
-      <button onClick={()=> navigate("/packFour")} className='bg-black p-3 px-8 rounded-2xl text-white font-bold hover:bg-violet-800 transition duration-400 cursor-pointer mt-15'>Commencer maintenant</button>
-
+      
+      <motion.button 
+        className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white font-bold py-4 px-10 rounded-2xl mt-16 relative overflow-hidden group border border-gray-700"
+        variants={buttonVariants}
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        whileHover="hover"
+        whileTap="tap"
+      >
+        <span className="relative z-10 flex items-center gap-2">
+          {t('features.cta')}
+          <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
+        </span>
+        <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </motion.button>
     </div>
   );
 }

@@ -1,8 +1,10 @@
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { Check, Instagram, Facebook, Search, Camera } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function PricingTable() {
+  const { t } = useTranslation();
   const [hoveredCard, setHoveredCard] = useState(null);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
@@ -17,16 +19,16 @@ export default function PricingTable() {
   const plans = [
     {
       id: 'community',
-      subtitle: 'Pack Community Management',
-      description: 'Dynamisez vos réseaux sociaux avec une gestion professionnelle et créative.',
+      subtitle: t('Pricing.plans.community.subtitle'),
+      description: t('Pricing.plans.community.description'),
       features: [
-        'Gestion de Facebook & Instagram',
-        '2 publications par semaine',
-        'Création graphique personnalisée',
-        'Élaboration d\'une mini-stratégie social media',
-        'Consultation gratuite incluse',
+        t('Pricing.plans.community.features.0'),
+        t('Pricing.plans.community.features.1'),
+        t('Pricing.plans.community.features.2'),
+        t('Pricing.plans.community.features.3'),
+        t('Pricing.plans.community.features.4')
       ],
-      idealFor: 'Boutiques, cafés, services, indépendants',
+      idealFor: t('Pricing.plans.community.idealFor'),
       featured: false,
       color: 'bg-white',
       icon: <Facebook className="w-8 h-8 text-purple-500" />,
@@ -34,16 +36,16 @@ export default function PricingTable() {
     },
     {
       id: 'seo',
-      subtitle: 'Pack SEO',
-      description: 'Boostez votre positionnement naturel sur les moteurs de recherche.',
+      subtitle: t('Pricing.plans.seo.subtitle'),
+      description: t('Pricing.plans.seo.description'),
       features: [
-        'Optimisation autour de 2 mots-clés principaux',
-        '3 mots-clés secondaires ciblés',
-        'Analyse concurrentielle de votre marché',
-        'Soumission aux moteurs de recherche (Google, Bing...)',
-        'Consultation gratuite incluse',
+        t('Pricing.plans.seo.features.0'),
+        t('Pricing.plans.seo.features.1'),
+        t('Pricing.plans.seo.features.2'),
+        t('Pricing.plans.seo.features.3'),
+        t('Pricing.plans.seo.features.4')
       ],
-      idealFor: 'Sites vitrines, blogs, entreprises locales',
+      idealFor: t('Pricing.plans.seo.idealFor'),
       featured: true,
       color: 'bg-black',
       icon: <Search className="w-8 h-8 text-purple-300" />,
@@ -51,16 +53,16 @@ export default function PricingTable() {
     },
     {
       id: 'shooting',
-      subtitle: 'Pack Shooting Pro',
-      description: 'Mettez en valeur vos produits, locaux ou équipe avec des visuels de qualité.',
+      subtitle: t('Pricing.plans.shooting.subtitle'),
+      description: t('Pricing.plans.shooting.description'),
       features: [
-        '20 photos HD (prises sur site)',
-        '10 retouches professionnelles',
-        'Vidéo backstage (jusqu\'à 30 secondes)',
-        'Livraison sous 24h',
-        'Consultation gratuite incluse',
+        t('Pricing.plans.shooting.features.0'),
+        t('Pricing.plans.shooting.features.1'),
+        t('Pricing.plans.shooting.features.2'),
+        t('Pricing.plans.shooting.features.3'),
+        t('Pricing.plans.shooting.features.4')
       ],
-      idealFor: 'Restaurants, hôtels, e-commerce, profils LinkedIn pros',
+      idealFor: t('Pricing.plans.shooting.idealFor'),
       featured: false,
       color: 'bg-white',
       icon: <Camera className="w-8 h-8 text-purple-500" />,
@@ -131,7 +133,7 @@ export default function PricingTable() {
   return (
     <div
       ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-50 to-purple-200 p-4 py-16"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-50 to-purple-200 p-4 py-16 rounded-3xl"
     >
       <motion.h1 
         className="text-4xl font-bold mb-4 text-center text-gray-800"
@@ -139,7 +141,7 @@ export default function PricingTable() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        Nos Offres
+        {t('Pricing.title')}
       </motion.h1>
       
       <motion.p 
@@ -148,7 +150,7 @@ export default function PricingTable() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        Des solutions adaptées à tous vos besoins numériques
+        {t('Pricing.subtitle')}
       </motion.p>
 
       <motion.div
@@ -189,7 +191,7 @@ export default function PricingTable() {
 
               <div className="mb-6">
                 <h4 className={`text-sm font-medium mb-3 ${plan.featured ? 'text-purple-200' : 'text-purple-600'}`}>
-                  Ce qui est inclus :
+                  {t('Pricing.included')}
                 </h4>
                 <div className="flex flex-col gap-3">
                   {plan.features.map((feature, idx) => (
@@ -209,7 +211,7 @@ export default function PricingTable() {
               <div className="mt-auto pt-6">
                 <div className={`mb-4 p-3 rounded-lg ${plan.featured ? 'bg-purple-800' : 'bg-purple-100'}`}>
                   <h4 className={`text-xs font-medium mb-1 ${plan.featured ? 'text-purple-200' : 'text-purple-600'}`}>
-                    ✅ Idéal pour :
+                    {t('Pricing.idealFor')}
                   </h4>
                   <p className="text-sm">
                     {plan.idealFor}
@@ -225,7 +227,7 @@ export default function PricingTable() {
                     handlePackageClick(plan.linkPath);
                   }}
                 >
-                  Découvrir les options
+                  {t('Pricing.discoverOptions')}
                 </motion.button>
               </div>
             </div>
@@ -241,7 +243,7 @@ export default function PricingTable() {
         transition={{ delay: 0.6 }}
       >
         <p className="text-gray-600 mb-4">
-          Besoin d'une solution sur mesure ? 
+          {t('Pricing.needCustom')}
         </p>
         <motion.button
           className="px-8 py-3 bg-purple-600 text-white rounded-full font-medium hover:bg-purple-700 transition-colors"
@@ -249,7 +251,7 @@ export default function PricingTable() {
           whileTap={{ scale: 0.95 }}
           onClick={() => handlePackageClick('/contact')}
         >
-          Contactez-nous
+          {t('Pricing.contactUs')}
         </motion.button>
       </motion.div>
     </div>

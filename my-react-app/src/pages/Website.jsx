@@ -8,8 +8,10 @@ import img3 from "../assets/pie-chart.png"
 import WhyChooseUs from '../components/ChousUs';
 import PricingTable from '../components/WebsitePackages';
 import FeaturesGrid from '../components/Get';
+import { useTranslation } from 'react-i18next';
 const HeroSection = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [isLoaded, setIsLoaded] = useState(false);
   
   useEffect(() => {
@@ -32,7 +34,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Your Vision, a Unique Website
+            {t('hero.title')}
           </motion.h1>
           
           <motion.p 
@@ -41,8 +43,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            We focus on building strong relationships and fostering active participation 
-            within your community.
+           {t('hero.description')}
           </motion.p>
           
           <motion.div 
@@ -57,7 +58,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-               Get Started
+               {t('hero.getStarted')}
             </motion.button>
             
             <motion.button 
@@ -66,7 +67,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Learn more
+              {t('hero.learnMore')}
             </motion.button>
           </motion.div>
         </motion.div>

@@ -2,8 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Send, Phone, Mail } from "lucide-react";
 import imgContact from "../../assets/contact.jpg";
+import { useTranslation } from 'react-i18next';
 
 export default function ContactPage() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -54,7 +56,8 @@ export default function ContactPage() {
       setFormStatus({
         loading: false,
         success: false,
-        error: "Tous les champs sont requis."
+        error:t('contact.validation.allFieldsRequired')
+
       });
       return;
     }
@@ -73,14 +76,13 @@ export default function ContactPage() {
       const data = await response.json();
       
       if (!response.ok) {
-        throw new Error(data.error || 'Une erreur est survenue lors de l\'envoi du formulaire.');
-      }
+throw new Error(data.error || t('contact.errors.submitError'));      }
       
       // Success handling
       setFormStatus({ loading: false, success: true, error: null });
       
       // Reset form after successful submission
-      setFormData({
+      setFormData({ 
         name: "",
         email: "",
         service: "",
@@ -112,7 +114,7 @@ export default function ContactPage() {
       setQuoteStatus({
         loading: false,
         success: false,
-        error: "Tous les champs sont requis."
+        error: t('contact.quote.errors.allFieldsRequired')
       });
       return;
     }
@@ -123,7 +125,7 @@ export default function ContactPage() {
       setQuoteStatus({
         loading: false,
         success: false,
-        error: "Veuillez entrer une adresse email valide."
+        error: t('contact.quote.errors.invalidEmail')
       });
       return;
     }
@@ -192,13 +194,13 @@ export default function ContactPage() {
     },
   };
 
-  const services = [
-    "Web Development",
-    "UI/UX Design",
-    "Digital Marketing",
-    "Mobile App Development",
-    "E-commerce Solutions",
-  ];
+const services = [
+  { value: "webDevelopment", label: t('contact.services.webDevelopment') },
+  { value: "uiuxDesign", label: t('contact.services.uiuxDesign') },
+  { value: "digitalMarketing", label: t('contact.services.digitalMarketing') },
+  { value: "mobileApp", label: t('contact.services.mobileApp') },
+  { value: "ecommerce", label: t('contact.services.ecommerce') }
+];
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-purple-100 font-sans mt-40">
@@ -214,14 +216,13 @@ export default function ContactPage() {
             variants={itemVariants}
             className="text-3xl md:text-4xl font-bold text-center mb-2 text-gray-800"
           >
-            Contactez-nous
+            {t('contact.title')}
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="text-center text-gray-600 mb-12 max-w-2xl mx-auto"
           >
-            Besoin d'un devis ou d'informations supplémentaires ? Notre équipe est
-            à votre écoute.
+            {t('contact.subtitle')}
           </motion.p>
 
           <div className="flex flex-col lg:flex-row gap-8 rounded-2xl overflow-hidden shadow-xl">
@@ -240,10 +241,9 @@ export default function ContactPage() {
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
                 <div className="bg-white/10 backdrop-blur-md rounded-xl p-6 text-white border border-white/20">
-                  <h3 className="font-semibold text-xl mb-4">Our Team</h3>
+                  <h3 className="font-semibold text-xl mb-4">{t('contact.team.title')}</h3>
                   <p className="mb-6">
-                    We're dedicated to delivering exceptional digital solutions that 
-                    drive real business growth.
+                   {t('contact.team.description')}
                   </p>
                   <div className="flex flex-col gap-3">
                     <div className="flex items-center gap-3">
@@ -264,12 +264,12 @@ export default function ContactPage() {
               variants={itemVariants}
               className="lg:w-1/2 bg-white p-6 md:p-8"
             >
-              <h3 className="text-2xl font-bold mb-6 text-gray-800">CONTACT-US</h3>
+              <h3 className="text-2xl font-bold mb-6 text-gray-800">{t('contact.form.title')}</h3>
               <div className="space-y-5">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                      Nom
+                      {t('contact.form.name')}
                     </label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
@@ -279,13 +279,13 @@ export default function ContactPage() {
                       name="name"
                       value={formData.name}
                       onChange={handleChange}
-                      placeholder="Votre nom"
+                      placeholder={t('contact.form.namePlaceholder')}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition duration-200"
                     />
                   </div>
                   <div>
                     <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                      Email
+                      {t('contact.form.email')}
                     </label>
                     <motion.input
                       whileFocus={{ scale: 1.01 }}
@@ -295,7 +295,7 @@ export default function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      placeholder="votremail@exemple.com"
+                      placeholder={t('contact.form.emailPlaceholder')}
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition duration-200"
                     />
                   </div>
@@ -303,7 +303,7 @@ export default function ContactPage() {
 
                 <div>
                   <label htmlFor="service" className="block text-sm font-medium text-gray-700 mb-1">
-                    Service
+                     {t('contact.form.service')}
                   </label>
                   <motion.select
                     whileFocus={{ scale: 1.01 }}
@@ -314,18 +314,18 @@ export default function ContactPage() {
                     onChange={handleChange}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition duration-200 bg-white"
                   >
-                    <option value="">Sélectionnez un service</option>
+                  <option value="">{t('contact.form.servicePlaceholder')}</option>
                     {services.map((service) => (
-                      <option key={service} value={service}>
-                        {service}
-                      </option>
-                    ))}
+                   <option key={service.value} value={service.value}>
+                     {service.label}
+                    </option>
+                   ))}
                   </motion.select>
                 </div>
 
                 <div>
                   <label htmlFor="sujet" className="block text-sm font-medium text-gray-700 mb-1">
-                    Sujet
+                    {t('contact.form.subject')}
                   </label>
                   <motion.input
                     whileFocus={{ scale: 1.01 }}
@@ -335,14 +335,14 @@ export default function ContactPage() {
                     name="sujet"
                     value={formData.sujet}
                     onChange={handleChange}
-                    placeholder="Sujet de votre message"
+                    placeholder={t('contact.form.subjectPlaceholder')}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition duration-200"
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message
+                      {t('contact.form.message')}
                   </label>
                   <motion.textarea
                     whileFocus={{ scale: 1.01 }}
@@ -352,7 +352,7 @@ export default function ContactPage() {
                     value={formData.message}
                     onChange={handleChange}
                     rows="4"
-                    placeholder="Votre message..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                     className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none transition duration-200 resize-none"
                   />
                 </div>
@@ -366,7 +366,7 @@ export default function ContactPage() {
                 
                 {formStatus.success && (
                   <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-lg">
-                    Votre message a été envoyé avec succès!
+                    {t('contact.form.success')}
                   </div>
                 )}
 
@@ -378,10 +378,10 @@ export default function ContactPage() {
                   className={`w-full ${formStatus.loading ? 'bg-purple-400' : 'bg-purple-600 hover:bg-purple-700'} text-white font-medium py-3 px-4 rounded-lg transition duration-300 flex items-center justify-center`}
                 >
                   {formStatus.loading ? (
-                    <span>Envoi en cours...</span>
+                    <span>{t('contact.form.sending')}</span>
                   ) : (
                     <>
-                      <span>Envoyer</span>
+                      <span>{t('contact.form.send')}</span>
                       <Send size={18} className="ml-2" />
                     </>
                   )}
@@ -402,14 +402,13 @@ export default function ContactPage() {
             variants={itemVariants}
             className="text-3xl font-bold text-center mb-6 text-gray-800"
           >
-            Obtenez un devis gratuit
+           {t('contact.quote.title')}
           </motion.h2>
           <motion.p
             variants={itemVariants}
             className="text-center text-gray-700 mb-8 max-w-2xl mx-auto"
           >
-            Élevez votre présence en ligne avec notre package digital tout-en-un. Nous offrons une création de site web expert et un ciblage d'audience robuste efficacement.
-          </motion.p>
+     {t('contact.quote.description')}          </motion.p>
 
           <div className="max-w-3xl mx-auto">
             <motion.div
@@ -423,7 +422,7 @@ export default function ContactPage() {
                 name="name"
                 value={quoteData.name}
                 onChange={handleQuoteChange}
-                placeholder="NOM..."
+                placeholder={t('contact.quote.namePlaceholder')}
                 className="w-full p-4 rounded-lg border border-purple-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none bg-white/70 backdrop-blur-sm"
               />
               <motion.input
@@ -433,7 +432,7 @@ export default function ContactPage() {
                 name="email"
                 value={quoteData.email}
                 onChange={handleQuoteChange}
-                placeholder="EMAIL..."
+                placeholder={t('contact.quote.emailPlaceholder')}
                 className="w-full p-4 rounded-lg border border-purple-300 focus:ring-2 focus:ring-purple-500 focus:border-transparent outline-none bg-white/70 backdrop-blur-sm"
               />
             </motion.div>
@@ -447,7 +446,7 @@ export default function ContactPage() {
             
             {quoteStatus.success && (
               <div className="bg-green-50 border border-green-200 text-green-600 px-4 py-3 rounded-lg mb-6 max-w-3xl mx-auto">
-                Merci ! Nous vous répondrons avec un devis sous peu.
+                {t('contact.quote.success')}
               </div>
             )}
             
@@ -465,10 +464,12 @@ export default function ContactPage() {
                 {quoteStatus.loading ? (
                   <>
                     <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
-                    ENVOI...
+                    {t('contact.quote.sending')}
                   </>
                 ) : (
-                  "DEMANDER MAINTENANT"
+                 <>
+                   {t('contact.quote.requestNow')}
+                 </>
                 )}
               </motion.button>
             </motion.div>

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Check, Box, Rocket, ShoppingCart, ArrowRight, Palette, Briefcase, Award } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function PricingSection() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const { t } = useTranslation();
 
   // Function to handle checkout navigation
   const handleCheckout = (packageName, price) => {
@@ -18,13 +20,13 @@ export default function PricingSection() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+    <div className="bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl mt-25">
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-black to-violet-700">
-          Nos packs / Branding
+          {t('brandingSection.title')}
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-          Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.
+          {t('brandingSection.subtitle')}
         </p>
       </div>
 
@@ -34,23 +36,17 @@ export default function PricingSection() {
           icon={<Palette />}
           iconColor="text-gray-700" 
           iconBg="bg-gray-100"
-          title="Pack Basic"
-          price="900"
-          description="La solution rapide et efficace pour lancer votre image de marque."
-          features={[
-            "Création de 2 propositions de logo",
-            "Design 100% original",
-            "Carte de visite professionnelle",
-            "Livraison rapide : sous 48h",
-            "Séance de consulting gratuite incluse",
-          ]}
-          idealFor="Recommandé pour : Freelances, auto-entrepreneurs, lancements rapides"
+          title={t('brandingPackages.basic.title')}
+          price={t('brandingPackages.basic.price')}
+          description={t('brandingPackages.basic.description')}
+          features={t('brandingPackages.basic.features')}
+          idealFor={t('brandingPackages.basic.idealFor')}
           buttonVariant="outline"
           isHovered={hoveredCard === 'basic'}
           onMouseEnter={() => setHoveredCard('basic')}
           onMouseLeave={() => setHoveredCard(null)}
           delay={0.1}
-          onCheckout={() => handleCheckout('Pack Basic', '900')}
+          onCheckout={() => handleCheckout(t('brandingPackages.basic.title'), t('brandingPackages.basic.price'))}
         />
 
         {/* Pack Branding */}
@@ -58,25 +54,18 @@ export default function PricingSection() {
           icon={<Briefcase />}
           iconColor="text-violet-600"
           iconBg="bg-violet-100"
-          title="Pack Branding"
-          price="2 200"
-          description="Un kit de branding complet pour poser des bases solides."
-          features={[
-            "Création de 3 propositions de logo",
-            "Carte de visite",
-            "Brochure professionnelle",
-            "Papier à en-tête",
-            "Livraison express : sous 48h",
-            "2 séances de consulting offertes",
-          ]}
-          idealFor="Recommandé pour : Startups, petites entreprises, sociétés en rebranding"
+          title={t('brandingPackages.branding.title')}
+          price={t('brandingPackages.branding.price')}
+          description={t('brandingPackages.branding.description')}
+          features={t('brandingPackages.branding.features')}
+          idealFor={t('brandingPackages.branding.idealFor')}
           buttonVariant="gradient"
           featured={true}
           isHovered={hoveredCard === 'branding'}
           onMouseEnter={() => setHoveredCard('branding')}
           onMouseLeave={() => setHoveredCard(null)}
           delay={0.2}
-          onCheckout={() => handleCheckout('Pack Branding', '2200')}
+          onCheckout={() => handleCheckout(t('brandingPackages.branding.title'), t('brandingPackages.branding.price'))}
         />
 
         {/* Pack Premium */}
@@ -84,31 +73,22 @@ export default function PricingSection() {
           icon={<Award />}
           iconColor="text-gray-700"
           iconBg="bg-gray-100"
-          title="Pack Premium"
-          price="3 800"
-          description="L'offre la plus complète pour une communication visuelle percutante."
-          features={[
-            "5 propositions de logo uniques",
-            "Carte de visite",
-            "Flyer",
-            "Affiche publicitaire",
-            "Papier en-tête",
-            "Brochure",
-            "Livraison rapide : sous 72h",
-            "3 séances de consulting personnalisées offertes",
-          ]}
-          idealFor="Recommandé pour : Agences, entreprises établies, lancements nationaux"
+          title={t('brandingPackages.premium.title')}
+          price={t('brandingPackages.premium.price')}
+          description={t('brandingPackages.premium.description')}
+          features={t('brandingPackages.premium.features')}
+          idealFor={t('brandingPackages.premium.idealFor')}
           buttonVariant="filled"
           isHovered={hoveredCard === 'premium'}
           onMouseEnter={() => setHoveredCard('premium')}
           onMouseLeave={() => setHoveredCard(null)}
           delay={0.3}
-          onCheckout={() => handleCheckout('Pack Premium', '3800')}
+          onCheckout={() => handleCheckout(t('brandingPackages.premium.title'), t('brandingPackages.premium.price'))}
         />
       </div>
 
       <div className="mt-16 text-center">
-        <p className="text-gray-500 text-sm">Des questions? Contactez notre équipe pour un devis personnalisé</p>
+        <p className="text-gray-500 text-sm">{t('brandingSection.contactText')}</p>
       </div>
     </div>
   );
@@ -131,6 +111,8 @@ function PricingCard({
   onCheckout,
   delay = 0
 }) {
+  const { t } = useTranslation();
+
   // Animation values
   const translateY = isHovered ? "-translate-y-2" : "translate-y-0";
   const scale = isHovered ? "scale-[1.03]" : "scale-100";
@@ -176,7 +158,7 @@ function PricingCard({
         
         {featured && (
           <div className="absolute top-0 right-0 bg-gradient-to-r from-violet-600 to-black text-white text-xs font-bold py-1 px-3 rounded-bl-lg rounded-tr-lg z-10">
-            Populaire
+            {t('brandingSection.popular')}
           </div>
         )}
 
@@ -191,22 +173,24 @@ function PricingCard({
           
           <div className="flex items-baseline mb-2">
             <span className="text-4xl font-extrabold">{price}</span>
-            <span className="text-gray-500 ml-2 text-base">MAD</span>
+            <span className="text-gray-500 ml-2 text-base">{t('brandingSection.currency')}</span>
           </div>
           
           <p className="text-gray-600 mb-6">{description}</p>
           
-          <p className="font-medium mb-4"><strong>Ce qui est inclus</strong> :</p>
+          <p className="font-medium mb-4"><strong>{t('brandingSection.whatIsIncluded')}</strong> :</p>
           
           <ul className="space-y-4 mb-6">
-            {features.map((text, idx) => (
+            {Array.isArray(features) ? features.map((text, idx) => (
               <Feature 
                 key={idx} 
                 text={text} 
                 isHovered={isHovered}
                 delay={idx * 0.05}
               />
-            ))}
+            )) : (
+              <li className="text-gray-600">Loading features...</li>
+            )}
           </ul>
           
           <p className="text-sm font-medium text-green-600 mb-8">{idealFor}</p>
@@ -221,7 +205,7 @@ function PricingCard({
             `}
             onClick={onCheckout}
           >
-            <span>Commander</span>
+            <span>{t('brandingSection.orderButton')}</span>
             <ArrowRight className={`ml-2 w-5 h-5 transition-transform duration-300 ${isHovered ? "translate-x-1" : ""} group-hover:translate-x-1`} />
           </button>
         </div>

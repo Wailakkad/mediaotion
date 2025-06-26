@@ -52,4 +52,27 @@ const AdminAuth = (req, res) => {
     }
 };
 
-module.exports = AdminAuth;
+const Admin = (req, res)=>{
+    const {id} = req.admin;
+    if(!id){
+        return res.status(400).json({ error: "Admin ID is required" });
+    }
+    db.query("SELECT * FROM Admin WHERE id = ?", [id], (err, results) => {
+        if (err) {
+            console.error("Database query error:", err);
+            return res.status(500).json({ error: "Internal server error" });
+        }
+
+        if (results.length === 0) {
+            return res.status(404).json({ error: "Admin not found" });
+        }
+
+        const admin = results[0];
+        const { password, ...adminWithoutPassword } = admin;
+
+        return res.json({ admin: adminWithoutPassword });
+    });
+
+}
+
+module.exports = {AdminAuth ,   Admin};

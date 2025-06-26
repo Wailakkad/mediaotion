@@ -5,9 +5,11 @@ import imgHero from "../../assets/community.png"
 import Why from './ChoseUs'
 import Packags from "./Packeges"
 import FeaturesGrid from './WhatGet';
+import { useTranslation } from 'react-i18next';
 const HeroSection = () => {
   const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoaded(true);
@@ -29,7 +31,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-                 Growing Your Community          </motion.h1>
+                 {t('community.title')}        </motion.h1>
           
           <motion.p 
             className="text-base text-gray-700 mb-8 max-w-lg"
@@ -37,8 +39,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            We focus on building strong relationships and fostering active participation within your community.
-          </motion.p>
+{t('community.description')}          </motion.p>
           
           <motion.div 
             className="flex flex-wrap gap-4"
@@ -52,7 +53,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-                Get Started
+               {t('community.getStarted')}
             </motion.button>
             
             <motion.button
@@ -61,7 +62,7 @@ const HeroSection = () => {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
             >
-              Learn more
+              {t('community.learnMore')}
             </motion.button>
           </motion.div>
         </motion.div>

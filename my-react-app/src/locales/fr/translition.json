@@ -1,0 +1,749 @@
+{
+  "heroTitle": "Développez votre communauté",
+  "heroText": "Nous nous concentrons sur la création de relations solides et la participation active au sein de votre communauté.",
+  "getStarted": "Commencer",
+  "learnMore": "En savoir plus",
+  "ActiveMembers": "Membres actifs",
+  "HappyClients": "clients satisfaits",
+  "premiumServicesTitle": "Nos Services Premium",
+  "premiumServicesDescription": "Nous fournissons des solutions numériques complètes pour aider votre entreprise à prospérer dans le monde en ligne.",
+  "service1Title": "Développement Web",
+  "service1Description": "Sites web personnalisés construits avec les dernières technologies pour assurer un chargement rapide et des designs responsifs.",
+  "service2Title": "Image de Marque",
+  "service2Description": "Création d'identités de marque et de visuels mémorables qui vous distinguent et établissent la confiance avec votre public.",
+  "service3Title": "Gestion de Communauté",
+  "service3Description": "Engagement et développement de votre communauté en ligne pour fidéliser et renforcer la réputation de votre marque.",
+  "service4Title": "Optimisation SEO",
+  "service4Description": "Améliorez votre classement dans les moteurs de recherche et générez du trafic organique vers votre site web.",
+    "Partnerships": "Partenariats",
+    "PartnerTittle": "Nos Partenaires de Confiance",
+    "PartnerDescription": "Travailler avec des leaders de l'industrie pour offrir une valeur exceptionnelle et des résultats à nos clients.",
+    "whyChooseUsTitle": "Pourquoi Nous Choisir",
+  "whyChooseUsDescription": "Avec des années d'expérience dans l'industrie numérique, nous avons aidé des centaines d'entreprises à transformer leur présence en ligne.",
+  "whyChooseUsImageAlt": "Réunion d'équipe professionnelle",
+  "whyChooseUsFeature1Title": "Équipe d'Experts",
+  "whyChooseUsFeature1Description": "Nos professionnels ont des années d'expérience dans l'industrie.",
+  "whyChooseUsFeature2Title": "Solutions Personnalisées",
+  "whyChooseUsFeature2Description": "Stratégies sur mesure conçues spécifiquement pour les besoins de votre entreprise.",
+  "whyChooseUsFeature3Title": "Support Continu",
+  "whyChooseUsFeature3Description": "Nous sommes avec vous à chaque étape, même après la fin du projet.",
+
+  "testimonialsTitle": "Ce Que Disent Nos Clients",
+  "testimonialsDescription": "Ne nous croyez pas sur parole. Voici ce que nos clients ont à dire sur leur expérience de travail avec nous.",
+  "testimonial1Name": "Jean Dupont",
+  "testimonial1Role": "PDG, TechCorp",
+  "testimonial1Content": "Travailler avec cette équipe a changé la donne pour notre entreprise. Notre présence en ligne s'est considérablement améliorée, et nous avons constaté une augmentation significative de l'engagement client.",
+  "testimonial2Name": "Marie Martin",
+  "testimonial2Role": "Directrice Marketing, GrowthCo",
+  "testimonial2Content": "Le site web qu'ils ont conçu pour nous a dépassé nos attentes. Il est non seulement beau mais aussi très fonctionnel et nous a aidés à attirer de nouveaux clients de manière constante.",
+  "testimonial3Name": "Pierre Durand",
+  "testimonial3Role": "Propriétaire, Solutions Retail",
+  "testimonial3Content": "Leurs stratégies de marketing numérique ont transformé notre présence en ligne. Nous avons constaté une augmentation de 200% des prospects depuis que nous travaillons avec eux. Hautement recommandé !",
+  "ctaTitle": "Prêt à Transformer Votre Présence Numérique ?",
+  "ctaDescription": "Faites le premier pas vers la croissance de votre entreprise en ligne. Contactez-nous dès aujourd'hui pour une consultation gratuite.",
+  "features": {
+    "title": "Nos Services",
+    "subtitle": "Des solutions complètes pour booster votre présence sur les réseaux sociaux",
+    "cta": "Commencer maintenant",
+    "socialManagement": {
+      "title": "Gestion de Réseaux Sociaux",
+      "description": "Gérez tous vos comptes depuis une seule plateforme"
+    },
+    "weeklyPosts": {
+      "title": "Publications Hebdomadaires",
+      "description": "Contenu créatif et engageant publié régulièrement"
+    },
+    "graphicDesign": {
+      "title": "Création Graphique",
+      "description": "Designs professionnels adaptés à votre marque"
+    },
+    "strategy": {
+      "title": "Stratégie Social Media",
+      "description": "Plans personnalisés pour maximiser votre portée"
+    }
+  } , 
+  "whatYouGet": {
+    "title": "Ce Que Vous Obtenez",
+    "subtitle": "Découvrez nos fonctionnalités premium conçues pour élever votre expérience",
+    "cta": "Commencez Votre Parcours",
+    "updates": {
+      "title": "Mises à Jour Rapides et Faciles",
+      "description": "Mises à jour ultra-rapides sans temps d'arrêt"
+    },
+    "secure": {
+      "title": "Optimisé et Sécurisé",
+      "description": "Sécurité et performance de niveau entreprise"
+    },
+    "responsive": {
+      "title": "Entièrement Responsive",
+      "description": "Expérience parfaite sur tous les appareils"
+    },
+    "support": {
+      "title": "Support Premium 24/7",
+      "description": "Assistance d'experts disponible en permanence"
+    }
+  },
+  
+  "hero": {
+    "title": "Votre Vision, un Site Web Unique",
+    "description": "Nous nous concentrons sur la construction de relations solides et la promotion d'une participation active au sein de votre communauté.",
+    "getStarted": "Commencer",
+    "learnMore": "En savoir plus"
+    
+  
+}, 
+
+  "whyChooseUs": {
+    "title": "Pourquoi Nous Choisir",
+    "startNow": "Commencer maintenant",
+    "features": {
+      "tailored": {
+        "title": "Design Personnalisé",
+        "description": "Nous créons des sites web personnalisés qui s'alignent avec votre identité de marque et vos objectifs spécifiques, garantissant une présence en ligne unique."
+      },
+      "userFocused": {
+        "title": "Axé sur l'Utilisateur",
+        "description": "Nos designs privilégient une expérience utilisateur fluide, rendant la navigation intuitive et engageante pour vos visiteurs."
+      },
+      "measurable": {
+        "title": "Succès Mesurable",
+        "description": "Obtient une commande vidéo pour optimiser des insights exceptionnels de manière ciblée."
+      }
+    }
+  
+},
+
+
+  "pricing": {
+    "title": "Nos Offres",
+    "subtitle": "Des solutions adaptées à tous vos besoins numériques",
+    "included": "Ce qui est inclus :",
+    "idealFor": "✅ Idéal pour :",
+    "choosePackage": "Choisir ce pack",
+    "plans": {
+      "basic": {
+        "subtitle": "Pack Basic",
+        "description": "L'essentiel pour une présence en ligne professionnelle.",
+        "features": [
+          "Site vitrine de 1 à 3 pages",
+          "Design responsive (mobile, tablette, desktop)",
+          "Interface attractive et claire",
+          "Optimisation SEO de base",
+          "1 séance de consulting gratuite"
+        ],
+        "idealFor": "Indépendants, artisans, petites structures"
+      },
+      "startup": {
+        "subtitle": "Pack Start-up",
+        "description": "Un site robuste pour lancer et développer votre activité.",
+        "features": [
+          "Site de 1 à 10 pages",
+          "Design avancé et personnalisé",
+          "Optimisation SEO avancée",
+          "Compatible tous supports",
+          "2 séances de consulting offertes"
+        ],
+        "idealFor": "PME, projets en lancement, agences"
+      },
+      "ecommerce": {
+        "subtitle": "Pack E-commerce",
+        "description": "Une boutique en ligne professionnelle, évolutive et performante.",
+        "features": [
+          "Produits en illimité",
+          "Site 100% responsive",
+          "Design moderne et ergonomique",
+          "SEO naturel pour visibilité optimale",
+          "3 séances de consulting personnalisées"
+        ],
+        "idealFor": "Boutiques en ligne, commerçants, marques"
+      }
+    }
+  } ,
+  "community": {
+    "title": "Développer Votre Communauté",
+    "description": "Nous nous concentrons sur la construction de relations solides et la promotion d'une participation active au sein de votre communauté.",
+    "getStarted": "Commencer",
+    "learnMore": "En savoir plus"
+  },
+
+
+  "communityManagement": {
+    "title": "Pourquoi Choisir Notre Gestion Communautaire",
+    "manageButton": "Gérer Votre Communauté",
+    "features": {
+      "moderation": {
+        "title": "Modération Experte",
+        "description": "Notre équipe de gestionnaires communautaires assure des discussions respectueuses et applique les directives communautaires pour maintenir un environnement sain."
+      },
+      "conflict": {
+        "title": "Résolution de Conflits",
+        "description": "Nous gérons expertement les situations sensibles et les conflits pour maintenir votre communauté positive, engagée et en croissance."
+      },
+      "growth": {
+        "title": "Croissance Basée sur les Données",
+        "description": "Suivez les métriques d'engagement et obtenez des insights exploitables pour optimiser votre stratégie communautaire et favoriser des connexions significatives."
+      }
+    }
+  },
+  "Pricing": {
+    "title": "Nos Offres",
+    "subtitle": "Des solutions adaptées à tous vos besoins numériques",
+    "included": "Ce qui est inclus :",
+    "idealFor": "✅ Idéal pour :",
+    "discoverOptions": "Découvrir les options",
+    "needCustom": "Besoin d'une solution sur mesure ?",
+    "contactUs": "Contactez-nous",
+    "plans": {
+      "community": {
+        "subtitle": "Pack Community Management",
+        "description": "Dynamisez vos réseaux sociaux avec une gestion professionnelle et créative.",
+        "features": [
+          "Gestion de Facebook & Instagram",
+          "2 publications par semaine",
+          "Création graphique personnalisée",
+          "Élaboration d'une mini-stratégie social media",
+          "Consultation gratuite incluse"
+        ],
+        "idealFor": "Boutiques, cafés, services, indépendants"
+      },
+      "seo": {
+        "subtitle": "Pack SEO",
+        "description": "Boostez votre positionnement naturel sur les moteurs de recherche.",
+        "features": [
+          "Optimisation autour de 2 mots-clés principaux",
+          "3 mots-clés secondaires ciblés",
+          "Analyse concurrentielle de votre marché",
+          "Soumission aux moteurs de recherche (Google, Bing...)",
+          "Consultation gratuite incluse"
+        ],
+        "idealFor": "Sites vitrines, blogs, entreprises locales"
+      },
+      "shooting": {
+        "subtitle": "Pack Shooting Pro",
+        "description": "Mettez en valeur vos produits, locaux ou équipe avec des visuels de qualité.",
+        "features": [
+          "20 photos HD (prises sur site)",
+          "10 retouches professionnelles",
+          "Vidéo backstage (jusqu'à 30 secondes)",
+          "Livraison sous 24h",
+          "Consultation gratuite incluse"
+        ],
+        "idealFor": "Restaurants, hôtels, e-commerce, profils LinkedIn pros"
+      }
+    }
+  },
+  "projects": {
+    "title": "Projets Phares",
+    "subtitle": "Découvrez nos derniers travaux et solutions innovantes qui favorisent la transformation numérique des entreprises dans le monde entier.",
+    "visitWebsite": "Visiter le Site",
+    "viewCode": "Voir le Code",
+    "viewProject": "Voir le Projet",
+    "projectDetails": "Détails du Projet",
+    "showing": "Affichage de",
+    "of": "sur",
+    "projectsCount": "projets",
+    "noProjectsFound": "Aucun Projet Trouvé",
+    "noProjectsMessage": "Les projets apparaîtront ici une fois qu'ils seront ajoutés à la base de données.",
+    "unableToLoad": "Impossible de Charger les Projets",
+    "categories": {
+      "webDevelopment": "Développement Web",
+      "mobileApp": "Application Mobile",
+      "uiuxDesign": "Design UI/UX"
+    }
+  },
+  "testimonials": {
+    "title": "Témoignages Clients",
+    "subtitle": "Écoutez les dirigeants visionnaires qui nous ont fait confiance pour transformer leur présence numérique et obtenir des résultats remarquables.",
+    "clients": {
+      "sarah": {
+        "name": "Sarah Johnson",
+        "position": "PDG, TechStart",
+        "text": "Travailler avec Media Motion a transformé notre présence en ligne. L'attention aux détails et les solutions créatives ont dépassé nos attentes. Notre ROI a augmenté de 300% au cours du premier trimestre."
+      },
+      "michael": {
+        "name": "Michael Chen",
+        "position": "Directeur Marketing, Bravo Inc",
+        "text": "Éthique de travail incroyable et talent de design. Nos taux de conversion se sont améliorés de 40% après la mise en œuvre du nouveau design de site web par Media Motion. Un véritable partenariat révolutionnaire."
+      },
+      "emma": {
+        "name": "Emma Rodriguez",
+        "position": "Fondatrice, Design Studio",
+        "text": "L'agence la plus fiable avec laquelle nous ayons travaillé. Media Motion livre à temps, communique clairement et produit un travail de qualité exceptionnelle qui dépasse constamment les standards de l'industrie."
+      }
+    }
+  },
+  "common": {
+    "project": "Projet",
+    "untitledProject": "Projet Sans Titre"
+  },
+ "contact": {
+    "title": "Contactez-nous",
+    "subtitle": "Prêt à donner vie à vos idées ? Discutons de votre projet et créons ensemble quelque chose d'extraordinaire.",
+    "validation": {
+      "allFieldsRequired": "Tous les champs sont requis. Veuillez remplir toutes les informations."
+    },
+    "errors": {
+      "submitError": "Une erreur s'est produite lors de l'envoi du formulaire. Veuillez réessayer."
+    },
+    "services": {
+      "webDevelopment": "Développement Web",
+      "uiuxDesign": "Design UI/UX",
+      "digitalMarketing": "Marketing Digital",
+      "mobileApp": "Développement d'Applications Mobiles",
+      "ecommerce": "Solutions E-commerce"
+    },
+    "team": {
+      "title": "Notre Équipe d'Experts",
+      "description": "Nous sommes une équipe passionnée de développeurs et de designers prêts à transformer votre vision en réalité. Construisons ensemble quelque chose d'extraordinaire."
+    },
+    "form": {
+      "title": "Envoyez-nous un Message",
+      "name": "Nom Complet",
+      "namePlaceholder": "Entrez votre nom complet",
+      "email": "Adresse Email",
+      "emailPlaceholder": "Entrez votre adresse email",
+      "service": "Service Requis",
+      "servicePlaceholder": "Sélectionnez un service",
+      "subject": "Sujet",
+      "subjectPlaceholder": "Entrez le sujet de votre message",
+      "message": "Message",
+      "messagePlaceholder": "Parlez-nous de votre projet ou de votre demande",
+      "send": "Envoyer le Message",
+      "sending": "Envoi en cours...",
+      "success": "Merci ! Votre message a été envoyé avec succès. Nous vous répondrons bientôt."
+    },
+    "quote": {
+      "title": "Obtenez un Devis Gratuit",
+      "description": "Intéressé par nos services ? Demandez un devis personnalisé et nous vous fournirons une proposition détaillée adaptée à vos besoins.",
+      "namePlaceholder": "Votre nom complet",
+      "emailPlaceholder": "Votre adresse email",
+      "requestNow": "Demander un Devis",
+      "sending": "Envoi en cours...",
+      "success": "Merci ! Votre demande de devis a été soumise avec succès. Nous vous enverrons une proposition détaillée bientôt.",
+      "errors": {
+        "allFieldsRequired": "Veuillez remplir tous les champs pour demander un devis.",
+        "invalidEmail": "Veuillez entrer une adresse email valide."
+      }
+    }
+  },
+  "faq": {
+    "title": {
+      "part1": "Questions",
+      "part2": "Fréquemment",
+      "part3": "Posées"
+    },
+    "subtitle": "Vous avez des questions sur nos services ? Nous avons compilé des réponses aux questions courantes pour vous aider à comprendre comment nous pouvons améliorer votre présence numérique.",
+    "sections": {
+      "webDevelopment": {
+        "title": "Développement de Sites Web",
+        "questions": [
+          {
+            "question": "Quelles technologies utilisez-vous pour le développement web ?",
+            "answer": "Nous utilisons des technologies modernes incluant React, Next.js, Vue.js et WordPress selon les besoins du client. Pour le style, nous implémentons Tailwind CSS et SCSS. Nos solutions backend incluent les frameworks Node.js, Python et PHP."
+          },
+          {
+            "question": "Combien de temps faut-il généralement pour construire un site web ?",
+            "answer": "Les délais de développement varient selon la complexité. Les sites simples peuvent être complétés en 2-4 semaines, tandis que les projets plus complexes avec des fonctionnalités personnalisées peuvent prendre 2-3 mois. Les plateformes e-commerce et les solutions d'entreprise nécessitent généralement 3-6 mois pour un développement et des tests appropriés."
+          },
+          {
+            "question": "Offrez-vous une maintenance de site web après le lancement ?",
+            "answer": "Oui, nous fournissons des packages de maintenance complets qui incluent des mises à jour régulières, la surveillance de sécurité, l'optimisation des performances et les mises à jour de contenu. Nos équipes de support s'assurent que votre site reste sécurisé, rapide et à jour avec les standards web actuels."
+          }
+        ]
+      },
+      "branding": {
+        "title": "Image de Marque",
+        "questions": [
+          {
+            "question": "Que comprend votre service d'image de marque ?",
+            "answer": "Nos services d'image de marque comprennent la conception de logo, le développement de palette de couleurs, la sélection typographique, la création de directives de marque, la stratégie de messagerie et les systèmes d'identité visuelle. Nous nous concentrons sur la création d'expériences de marque cohérentes qui résonnent avec votre public cible."
+          },
+          {
+            "question": "Comment abordez-vous le processus d'image de marque ?",
+            "answer": "Nous commençons par des sessions de découverte pour comprendre vos objectifs commerciaux, votre public cible et votre positionnement sur le marché. Nous menons ensuite des recherches, développons des directions conceptuelles, affinons la direction choisie et livrons des assets de marque complets avec des directives pour l'implémentation."
+          },
+          {
+            "question": "Pouvez-vous rafraîchir notre marque existante au lieu d'en créer une nouvelle ?",
+            "answer": "Absolument. Les rafraîchissements de marque peuvent moderniser votre identité visuelle tout en maintenant la reconnaissance de marque. Nous analysons votre image de marque actuelle, identifions les éléments à préserver et mettons à jour réfléchiment les composants pour mieux s'aligner avec vos objectifs commerciaux actuels et votre position sur le marché."
+          }
+        ]
+      },
+      "uiuxDesign": {
+        "title": "Design UI/UX",
+        "questions": [
+          {
+            "question": "Quel est votre processus de design UI/UX ?",
+            "answer": "Notre processus inclut la recherche utilisateur, l'architecture de l'information, le wireframing, le prototypage, le design visuel et les tests d'utilisabilité. Nous créons des designs centrés sur l'utilisateur qui équilibrent l'attrait esthétique avec la fonctionnalité et la navigation intuitive."
+          },
+          {
+            "question": "Comment vous assurez-vous que les designs sont accessibles ?",
+            "answer": "Nous adhérons aux directives WCAG, implémentant un contraste de couleur approprié, du HTML sémantique, la navigation au clavier, la compatibilité avec les lecteurs d'écran et le design responsive. Nous menons des audits d'accessibilité tout au long du processus de design et de développement pour assurer l'inclusivité."
+          },
+          {
+            "question": "Créez-vous des systèmes de design pour les projets plus importants ?",
+            "answer": "Oui, pour les projets complexes nous développons des systèmes de design complets avec des composants réutilisables, des guides de style, des modèles d'interaction et de la documentation. Cela assure la cohérence à travers tous les points de contact et facilite la mise à l'échelle et la maintenance efficaces."
+          }
+        ]
+      },
+      "seoOptimization": {
+        "title": "Optimisation SEO",
+        "questions": [
+          {
+            "question": "Quels services SEO offrez-vous ?",
+            "answer": "Nos services SEO incluent les audits SEO techniques, l'optimisation on-page, la stratégie de contenu, la recherche de mots-clés, l'analyse concurrentielle, le SEO local, la création de liens, l'optimisation des performances et les rapports d'analyse mensuels avec des insights actionnables."
+          },
+          {
+            "question": "Combien de temps faut-il pour voir les résultats des efforts SEO ?",
+            "answer": "Le SEO est une stratégie à long terme. Les améliorations initiales peuvent être vues dans les 3-4 mois, mais les résultats significatifs apparaissent généralement après 6-12 mois d'optimisation constante. Nous fournissons des mises à jour de progrès régulières tout au long du processus."
+          },
+          {
+            "question": "Garantissez-vous les classements en première page ?",
+            "answer": "Nous ne garantissons pas de classements spécifiques car les algorithmes de recherche évoluent constamment et de nombreux facteurs sont hors de notre contrôle. Au lieu de cela, nous nous concentrons sur des pratiques d'optimisation durables qui améliorent la visibilité, la qualité du trafic et les conversions au fil du temps."
+          }
+        ]
+      }
+    }
+  } ,
+
+   "pricingSection": {
+    "title": "Nos packs / Services",
+    "subtitle": "Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.",
+    "contactText": "Des questions? Contactez notre équipe pour un devis personnalisé",
+    "currency": "MAD",
+    "orderButton": "Commander",
+    "whatIsIncluded": "Ce qui est inclus",
+    "popular": "Populaire"
+  },
+  "servicePackages": {
+    "siteVitrine": {
+      "title": "Pack Site Vitrine",
+      "price": "5000",
+      "description": "Donnez vie à votre présence en ligne avec un site élégant et performant.",
+      "features": [
+        "Jusqu'à 3 pages professionnelles",
+        "Design sur mesure et attractif",
+        "Responsive design (mobile, tablette, desktop)",
+        "Optimisation SEO de base",
+        "Intégration de vos contenus (textes, images, formulaires)"
+      ],
+      "idealFor": "Idéal pour : Artisans, commerçants, consultants, indépendants"
+    },
+    "identiteVisuelle": {
+      "title": "Pack Identité Visuelle",
+      "price": "900",
+      "description": "Posez les bases d'une image de marque forte et cohérente.",
+      "features": [
+        "2 propositions de logo personnalisées",
+        "Design 100% original",
+        "Livraison du logo HD + carte de visite",
+        "Délai express : 48h"
+      ],
+      "idealFor": "Idéal pour : Startups, auto-entrepreneurs, nouvelles marques"
+    },
+    "motionDesign": {
+      "title": "Pack Motion Design",
+      "price": "4500",
+      "description": "Communiquez efficacement avec une vidéo animée professionnelle.",
+      "features": [
+        "Vidéo animée jusqu'à 60 secondes",
+        "Storyboard sur mesure",
+        "Musique de fond libre de droits",
+        "Texte ou voix-off (jusqu'à 150 mots)"
+      ],
+      "idealFor": "Idéal pour : Réseaux sociaux, présentations, campagnes de lancement"
+    }
+  },
+   "brandingSection": {
+    "title": "Nos packs / Branding",
+    "subtitle": "Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.",
+    "contactText": "Des questions? Contactez notre équipe pour un devis personnalisé",
+    "currency": "MAD",
+    "orderButton": "Commander",
+    "whatIsIncluded": "Ce qui est inclus",
+    "popular": "Populaire"
+  },
+  "brandingPackages": {
+    "basic": {
+      "title": "Pack Basic",
+      "price": "900",
+      "description": "La solution rapide et efficace pour lancer votre image de marque.",
+      "features": [
+        "Création de 2 propositions de logo",
+        "Design 100% original",
+        "Carte de visite professionnelle",
+        "Livraison rapide : sous 48h",
+        "Séance de consulting gratuite incluse"
+      ],
+      "idealFor": "Recommandé pour : Freelances, auto-entrepreneurs, lancements rapides"
+    },
+    "branding": {
+      "title": "Pack Branding",
+      "price": "2 200",
+      "description": "Un kit de branding complet pour poser des bases solides.",
+      "features": [
+        "Création de 3 propositions de logo",
+        "Carte de visite",
+        "Brochure professionnelle",
+        "Papier à en-tête",
+        "Livraison express : sous 48h",
+        "2 séances de consulting offertes"
+      ],
+      "idealFor": "Recommandé pour : Startups, petites entreprises, sociétés en rebranding"
+    },
+    "premium": {
+      "title": "Pack Premium",
+      "price": "3 800",
+      "description": "L'offre la plus complète pour une communication visuelle percutante.",
+      "features": [
+        "5 propositions de logo uniques",
+        "Carte de visite",
+        "Flyer",
+        "Affiche publicitaire",
+        "Papier en-tête",
+        "Brochure",
+        "Livraison rapide : sous 72h",
+        "3 séances de consulting personnalisées offertes"
+      ],
+      "idealFor": "Recommandé pour : Agences, entreprises établies, lancements nationaux"
+    }
+  } ,
+
+
+  "webSection": {
+    "title": "SERVICES SITE WEB",
+    "subtitle": "Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.",
+    "currency": "MAD",
+    "contactText": "Des questions ? Contactez notre équipe pour un devis personnalisé",
+    "popular": "Populaire",
+    "whatIsIncluded": "Ce qui est inclus",
+    "orderButton": "Commander"
+  },
+  "webPackages": {
+    "basic": {
+      "title": "Pack Basic",
+      "price": "5000",
+      "description": "L'essentiel pour une présence en ligne professionnelle.",
+      "features": [
+        "Site vitrine de 1 à 3 pages",
+        "Design responsive (mobile, tablette, desktop)",
+        "Interface attractive et claire",
+        "Optimisation SEO de base",
+        "1 séance de consulting gratuite"
+      ],
+      "idealFor": "Recommandé pour : Indépendants, artisans, petites structures"
+    },
+    "startup": {
+      "title": "Pack Start-up",
+      "price": "8500",
+      "description": "Un site robuste pour lancer et développer votre activité.",
+      "features": [
+        "Site de 1 à 10 pages",
+        "Design avancé et personnalisé",
+        "Optimisation SEO avancée",
+        "Compatible tous supports",
+        "2 séances de consulting offertes"
+      ],
+      "idealFor": "Recommandé pour : PME, projets en lancement, agences"
+    },
+    "ecommerce": {
+      "title": "Pack E-commerce",
+      "price": "15000",
+      "description": "Une boutique en ligne professionnelle, évolutive et performante.",
+      "features": [
+        "Produits en illimité",
+        "Site 100 % responsive",
+        "Design moderne et ergonomique",
+        "SEO naturel pour visibilité optimale",
+        "3 séances de consulting personnalisées"
+      ],
+      "idealFor": "Recommandé pour : Boutiques en ligne, commerçants, marques"
+    }
+  },
+  "communitySection": {
+    "title": "Nos packs / Réseaux Sociaux",
+    "subtitle": "Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.",
+    "currency": "MAD",
+    "contactText": "Des questions ? Contactez notre équipe pour un devis personnalisé.",
+    "popular": "Populaire",
+    "whatIsIncluded": "Ce qui est inclus",
+    "orderButton": "Commander"
+  },
+  "communityPackages": {
+    "basic": {
+      "title": "Pack Basic",
+      "price": "2000",
+      "description": "Une présence efficace et professionnelle sur les réseaux sociaux.",
+      "features": [
+        "Gestion de Facebook + Instagram",
+        "8 publications par mois (visuels + contenu)",
+        "Création graphique personnalisée",
+        "Mise en place d'une stratégie social media de base",
+        "1 séance de consulting offerte"
+      ],
+      "idealFor": "Recommandé pour : Petites entreprises, indépendants, commerces de proximité"
+    },
+    "visibility": {
+      "title": "Pack Visibilité",
+      "price": "5200",
+      "description": "Renforcez votre impact et votre régularité avec un accompagnement plus poussé.",
+      "features": [
+        "Gestion de Facebook + Instagram",
+        "12 publications par mois",
+        "Animation & modération (jusqu'à 2 interactions par mois)",
+        "Veille concurrentielle et recherche de contenus pertinents",
+        "2 séances de consulting offertes"
+      ],
+      "idealFor": "Recommandé pour : Startups, PME, marques en croissance"
+    },
+    "performance": {
+      "title": "Pack Performance",
+      "price": "11500",
+      "description": "Une gestion complète et stratégique pour une performance maximale.",
+      "features": [
+        "Gestion de 4 réseaux sociaux au choix",
+        "25 publications par mois",
+        "Animation & modération active (jusqu'à 5 interventions mensuelles)",
+        "Veille stratégique et création de contenu approfondie",
+        "1 campagne ou événement digital/an",
+        "1 article rédactionnel / blog / LinkedIn par an",
+        "3 séances de consulting sur mesure offertes"
+      ],
+      "idealFor": "Recommandé pour : Grandes entreprises, e-commerçants, institutions"
+    }
+  } ,
+  "photoshootSection": {
+    "title": "PACKS PHOTOSHOOTS",
+    "subtitle": "Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.",
+    "currency": "MAD",
+    "contactText": "Des questions ? Contactez notre équipe pour un devis personnalisé.",
+    "popular": "Populaire",
+    "whatIsIncluded": "Ce qui est inclus",
+    "orderButton": "Commander"
+  },
+  "photoshootPackages": {
+    "basic": {
+      "title": "Pack Basic",
+      "price": "1500",
+      "description": "Un shooting rapide et efficace pour mettre en avant vos services ou produits.",
+      "features": [
+        "Durée du shooting : 2h",
+        "30 photos HD livrées",
+        "10 photos retouchées de qualité pro",
+        "Vidéo backstage (30 secondes)",
+        "Livraison rapide : sous 24h",
+        "1 séance de consulting gratuite"
+      ],
+      "idealFor": "Recommandé pour : Restaurants, créateurs, indépendants"
+    },
+    "pro": {
+      "title": "Pack Pro",
+      "price": "2500",
+      "description": "Un shooting complet pour raconter l'histoire de votre marque.",
+      "features": [
+        "Durée : 4h",
+        "50 photos HD livrées",
+        "20 photos retouchées",
+        "Vidéo backstage (30 secondes)",
+        "Livraison rapide : sous 24h",
+        "1 séance de consulting offerte"
+      ],
+      "idealFor": "Recommandé pour : PME, professionnels du bien-être, agences"
+    },
+    "ecommerce": {
+      "title": "Pack E-commerce",
+      "price": "3800",
+      "description": "Un pack optimisé pour les boutiques en ligne et le contenu produit.",
+      "features": [
+        "Durée : 4h à 6h",
+        "5 produits (5 photos par produit)",
+        "25 photos retouchées",
+        "Vidéo backstage (30 secondes)",
+        "Livraison rapide : sous 24h",
+        "1 séance de consulting incluse"
+      ],
+      "idealFor": "Recommandé pour : Sites e-commerce, marketplaces, catalogues"
+    }
+  } ,
+  "seoSection": {
+    "title": "PACKS SEO (Référencement Naturel)",
+    "subtitle": "Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.",
+    "currency": "MAD",
+    "contactText": "Des questions ? Contactez notre équipe pour un devis personnalisé.",
+    "popular": "Populaire",
+    "whatIsIncluded": "Ce qui est inclus",
+    "orderButton": "Commander"
+  },
+  "seoPackages": {
+    "basic": {
+      "title": "Pack Basic",
+      "price": "3000",
+      "description": "L'essentiel pour améliorer votre présence sur les moteurs de recherche.",
+      "features": [
+        "2 mots-clés principaux ciblés",
+        "3 mots-clés secondaires",
+        "Analyse du classement de vos concurrents",
+        "Soumission de votre site aux moteurs de recherche (Google, Bing…)",
+        "1 séance de consulting gratuite"
+      ],
+      "idealFor": "Recommandé pour : Sites vitrines, blogs, indépendants"
+    },
+    "pro": {
+      "title": "Pack Pro",
+      "price": "4000",
+      "description": "Un accompagnement plus poussé pour renforcer votre visibilité.",
+      "features": [
+        "4 mots-clés principaux",
+        "6 mots-clés secondaires",
+        "Étude comparative du positionnement concurrentiel",
+        "Soumission optimisée aux moteurs de recherche",
+        "2 séances de consulting offertes"
+      ],
+      "idealFor": "Recommandé pour : PME, agences, sites à fort contenu"
+    },
+    "premium": {
+      "title": "Pack Premium",
+      "price": "5200",
+      "description": "Une stratégie SEO complète pour performer durablement sur le web.",
+      "features": [
+        "6 mots-clés principaux",
+        "15 mots-clés secondaires",
+        "Audit SEO + benchmark concurrentiel",
+        "Soumission avancée + optimisation technique de base",
+        "3 séances de consulting personnalisées"
+      ],
+      "idealFor": "Recommandé pour : Sites e-commerce, entreprises en expansion"
+    }
+  } , 
+  "footer": {
+    "description": "Nos services sont conçus pour répondre à vos besoins uniques. Nous créons des sites web personnalisés et des stratégies de community management pour garantir une présence en ligne remarquable.",
+    "quickLinksHeader": "Liens rapides",
+    "servicesHeader": "Services",
+    "contactHeader": "Contactez-nous",
+    "address": "14, Bd de Paris, ETG 5, Bureau 49, Casablanca, Maroc",
+    "phone": "+212 6 10 67 11 98",
+    "email": "contact@mediamotion.ma",
+    "copyright": "MediaMotion © 2025. Tous droits réservés.",
+    "links": {
+      "home": "Accueil",
+      "portfolio": "Portfolio",
+      "faq": "FAQ",
+      "contact": "Contact"
+    },
+    "services": {
+      "webDevelopment": "Développement Web",
+      "branding": "Branding",
+      "communityManagement": "Community Management",
+      "seo": "Optimisation SEO"
+    }
+  }
+
+  
+
+  
+}
+
+
+
+
+
+

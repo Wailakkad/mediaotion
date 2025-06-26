@@ -1,49 +1,51 @@
 import React, { useState } from 'react';
 import { Globe, Layers, Users, TrendingUp } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const PremiumServices = () => {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const { t } = useTranslation();
   const ref = React.useRef(null);
   const inView = useInView(ref, {
     triggerOnce: true,
     threshold: 0.1,
   });
 
-  const services = [
-    {
-      id: 1,
-      title: "Web Development",
-      description: "Custom websites built with the latest technologies to ensure fast loading, responsive designs.",
-      icon: <Globe className="h-6 w-6 text-purple-700" />,
-      bgColor: "bg-purple-50",
-      iconBgColor: "bg-purple-100",
-    },
+const services = [
   {
-  id: 2,
-  title: "Branding",
-  description: "Crafting memorable brand identities and visuals that set you apart and build trust with your audience.",
-  icon: <Layers className="h-6 w-6 text-white" />,
-  bgColor: "bg-purple-100",
-  iconBgColor: "bg-black",
-},
- {
-  id: 3,
-  title: "Community Management",
-  description: "Engaging and growing your online community to build loyalty and boost your brand’s reputation.",
-  icon: <Users className="h-6 w-6 text-purple-700" />, // Make sure to import Users from lucide-react
-  bgColor: "bg-purple-50",
-  iconBgColor: "bg-purple-100",
-},
-    {
-      id: 4,
-      title: "SEO Optimization",
-      description: "Improve your search engine rankings and drive organic traffic to your website.",
-      icon: <TrendingUp className="h-6 w-6 text-white" />,
-      bgColor: "bg-purple-100",
-      iconBgColor: "bg-black",
-    },
-  ];
+    id: 1,
+    title: t('service1Title'), // Use translation key
+    description: t('service1Description'), // Use translation key
+    icon: <Globe className="h-6 w-6 text-purple-700" />,
+    bgColor: "bg-purple-50",
+    iconBgColor: "bg-purple-100",
+  },
+  {
+    id: 2,
+    title: t('service2Title'), // Use translation key
+    description: t('service2Description'), // Use translation key
+    icon: <Layers className="h-6 w-6 text-white" />,
+    bgColor: "bg-purple-100",
+    iconBgColor: "bg-black",
+  },
+  {
+    id: 3,
+    title: t('service3Title'), // Use translation key
+    description: t('service3Description'), // Use translation key
+    icon: <Users className="h-6 w-6 text-purple-700" />,
+    bgColor: "bg-purple-50",
+    iconBgColor: "bg-purple-100",
+  },
+  {
+    id: 4,
+    title: t('service4Title'), // Use translation key
+    description: t('service4Description'), // Use translation key
+    icon: <TrendingUp className="h-6 w-6 text-white" />,
+    bgColor: "bg-purple-100",
+    iconBgColor: "bg-black",
+  },
+];
 
   const containerVariants = {
     hidden: {},
@@ -89,7 +91,7 @@ const PremiumServices = () => {
         animate={inView ? "visible" : "hidden"}
         variants={titleVariants}
       >
-        <h2 className="text-3xl font-bold text-gray-800 mb-3">Our Premium Services</h2>
+        <h2 className="text-3xl font-bold text-gray-800 mb-3">{t('premiumServicesTitle')}</h2>
         <motion.div 
           className="w-32 h-1 bg-purple-500 mx-auto mb-6"
           initial={{ width: 0 }}
@@ -97,7 +99,7 @@ const PremiumServices = () => {
           transition={{ duration: 0.8, delay: 0.3 }}
         ></motion.div>
         <p className="text-gray-600 max-w-2xl mx-auto">
-          We provide comprehensive digital solutions to help your business thrive in the online world.
+          {t('premiumServicesDescription')}
         </p>
       </motion.div>
 
@@ -126,8 +128,8 @@ const PremiumServices = () => {
             >
               {service.icon}
             </motion.div>
-            <h3 className="text-xl font-semibold text-gray-800 mb-3">{service.title}</h3>
-            <p className="text-gray-600">{service.description}</p>
+            <h3 className="text-xl font-semibold text-gray-800 mb-3">{t(`service${service.id}Title`)}</h3>
+            <p className="text-gray-600">{t(`service${service.id}Description`)}</p>
           </motion.div>
         ))}
       </motion.div>

@@ -1,9 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 import { motion, useInView, useAnimation } from 'framer-motion';
 import img from "../assets/whyChoseUs.png"
 export default function WhyChooseUs() {
+  const {t} = useTranslation();
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, threshold: 0.2 });
@@ -40,22 +42,22 @@ export default function WhyChooseUs() {
 
   const featureItems = [
     {
-      title: "Expert Team",
-      description: "Our professionals have years of industry experience."
+      title: t('whyChooseUsFeature1Title'),
+      description: t('whyChooseUsFeature1Description')
     },
     {
-      title: "Custom Solutions",
-      description: "Tailored strategies designed specifically for your business needs."
+      title: t('whyChooseUsFeature2Title'),
+      description: t('whyChooseUsFeature2Description')
     },
     {
-      title: "Ongoing Support",
-      description: "We're with you every step of the way, even after project completion."
+      title: t('whyChooseUsFeature3Title'),
+      description: t('whyChooseUsFeature3Description')
     }
   ];
     const navigate = useNavigate();
 
   return (
-    <div className="bg-[#f8f6fc] py-16 lg:py-24 overflow-hidden">
+    <div className=" py-16 lg:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           ref={ref}
@@ -89,15 +91,14 @@ export default function WhyChooseUs() {
               variants={itemVariants}
               className="text-3xl font-bold text-gray-800 sm:text-4xl mb-4"
             >
-              Why Choose Us
+              {t('whyChooseUsTitle')}
             </motion.h2>
             
             <motion.p 
               variants={itemVariants}
               className="text-gray-600 mb-8 text-lg"
             >
-              With years of experience in the digital industry, we've helped hundreds of
-              businesses transform their online presence.
+              {t('whyChooseUsDescription')}
             </motion.p>
 
             <motion.div 
@@ -148,7 +149,7 @@ export default function WhyChooseUs() {
                 whileTap={{ scale: 0.98 }}
                 className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-medium rounded-lg shadow-md hover:shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50"
               >
-                Get Started
+               {t('getStarted')}
               </motion.button>
             </motion.div>
           </motion.div>

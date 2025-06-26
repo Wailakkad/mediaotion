@@ -31,6 +31,22 @@ import {
   LogOut
 } from 'lucide-react';
 
+const handleAuthError = (response) => {
+  if (response.status === 401 || response.status === 403) {
+    localStorage.removeItem('adminToken');
+    window.location.href = '/AdminLogin';
+    return true;
+  }
+  return false;
+};
+const getAuthHeaders = () => {
+  const token = localStorage.getItem('adminToken');
+  return {
+    'Content-Type': 'application/json',
+    ...(token && { 'Authorization': `Bearer ${token}` })
+  };
+};
+
 const AdminDashboard = () => {
   const [activeSection, setActiveSection] = useState('dashboard');
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -51,6 +67,9 @@ const [showDeleteContactModal, setShowDeleteContactModal] = useState(false);
 const [contactToDelete, setContactToDelete] = useState(null);
 const [deletingContactId, setDeletingContactId] = useState(null);
 const [showLogoutModal, setShowLogoutModal] = useState(false);
+const [adminData, setAdminData] = useState(null);
+const [loadingAdmin, setLoadingAdmin] = useState(false);
+const [errorAdmin, setErrorAdmin] = useState(null);
 
 const STATUS_OPTIONS = [
   { value: 'pending', label: 'Pending', color: 'bg-yellow-100 text-yellow-800' },
@@ -83,7 +102,8 @@ const STATUS_OPTIONS = [
     orders: 'http://localhost:5000/api/v6/Orders',
     contacts: 'http://localhost:5000/api/v2/AllContact',
     projects: 'http://localhost:5000/api/v4/projects',
-    quotes: 'http://localhost:5000/api/v3/Allquotes'
+    quotes: 'http://localhost:5000/api/v3/Allquotes',
+    admin: 'http://localhost:5000/api/v5/admin'
   };
  const ViewOrderDetails = () => {
   return (
@@ -214,9 +234,7 @@ const deleteOrder = async (orderId) => {
   try {
     const response = await fetch(`http://localhost:5000/api/v6/DeleteOrder/${orderId}`, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      }
+      headers:getAuthHeaders()
     });
 
     if (!response.ok) {
@@ -243,9 +261,7 @@ const deleteProject = async (projectId) => {
   try {
     const response = await fetch(`http://localhost:5000/api/v4/DeleteProject/${projectId}`, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      }
+      headers:getAuthHeaders()
     });
 
     if (!response.ok) {
@@ -272,9 +288,7 @@ const deleteQuote = async (quoteId) => {
   try {
     const response = await fetch(`http://localhost:5000/api/v3/quotes/${quoteId}`, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      }
+     headers:getAuthHeaders()
     });
 
     if (!response.ok) {
@@ -301,9 +315,7 @@ const deleteContact = async (contactId) => {
   try {
     const response = await fetch(`http://localhost:5000/api/v2/contact/${contactId}`, {
       method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      }
+     headers:getAuthHeaders()
     });
 
     if (!response.ok) {
@@ -329,9 +341,7 @@ const updateOrderStatus = async (orderId, newStatus) => {
   try {
     const response = await fetch(`http://localhost:5000/api/v6/UpdateOrderStatus/${orderId}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers:getAuthHeaders(),
       body: JSON.stringify({
         status: newStatus
       })
@@ -365,7 +375,9 @@ const updateOrderStatus = async (orderId, newStatus) => {
   const fetchOrderById = async (orderId) => {
   setLoadingOrderDetails(true);
   try {
-    const response = await fetch(`http://localhost:5000/api/v6/OrderById/${orderId}`);
+    const response = await fetch(`http://localhost:5000/api/v6/OrderById/${orderId}` , {
+      headers:getAuthHeaders()
+    });
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -384,8 +396,12 @@ const fetchData = async (endpoint, dataType) => {
     setError(prev => ({ ...prev, [dataType]: null }));
     
     try {
-      const response = await fetch(endpoint);
+      const response = await fetch(endpoint , {
+        method: 'GET',
+        headers: getAuthHeaders()
+      });
       if (!response.ok) {
+        if (handleAuthError(response)) return [];
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
@@ -415,6 +431,41 @@ const fetchData = async (endpoint, dataType) => {
 };
 
   // Fetch functions for each data type
+
+  const fetchAdminData = async () => {
+  setLoadingAdmin(true);
+  setErrorAdmin(null);
+  
+  try {
+    const response = await fetch(API_ENDPOINTS.admin, {
+      method: 'GET',
+      headers: getAuthHeaders()
+    });
+    
+    if (!response.ok) {
+      if (handleAuthError(response)) return;
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    console.log('Admin data:', data);
+    
+    // Handle different response structures
+    let result = data;
+    if (data.result) {
+      result = data.result;
+    } else if (data.data) {
+      result = data.data;
+    }
+    
+    setAdminData(result);
+  } catch (err) {
+    console.error('Error fetching admin data:', err);
+    setErrorAdmin('Failed to load admin profile');
+  } finally {
+    setLoadingAdmin(false);
+  }
+};
   const fetchOrders = async () => {
     const data = await fetchData(API_ENDPOINTS.orders, 'orders');
     setOrders(data);
@@ -441,6 +492,7 @@ const fetchData = async (endpoint, dataType) => {
     fetchContacts();
     fetchProjects();
     fetchQuotes();
+    fetchAdminData();
   }, []);
 
   // Calculate stats from real data
@@ -457,6 +509,7 @@ const fetchData = async (endpoint, dataType) => {
     { id: 'projects', label: 'Projects', icon: FolderOpen, count: stats.totalProjects },
     { id: 'contacts', label: 'Messages', icon: MessageSquare, count: stats.totalContacts },
     { id: 'quotes', label: 'Quotes', icon: FileText, count: stats.totalQuotes },
+    { id: 'profile', label: 'Profile', icon: User },
 
   ];
 
@@ -992,8 +1045,7 @@ const LogoutConfirmationModal = () => {
       {showDeleteModal && <DeleteConfirmationModal />}
     </div>
   );
-
-  const renderProjects = () => (
+const renderProjects = () => (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold text-gray-900">Projects Management</h2>
@@ -1072,6 +1124,131 @@ const LogoutConfirmationModal = () => {
       {showDeleteProjectModal && <DeleteProjectConfirmationModal />}
     </div>
   );
+const renderProfile = () => (
+  <div className="max-w-6xl mx-auto space-y-8">
+    <div className="border-b border-gray-200 pb-6">
+      <h2 className="text-3xl font-bold text-gray-900 tracking-tight">Profile Settings</h2>
+      <p className="mt-2 text-gray-600">Manage your account information and preferences</p>
+    </div>
+    
+    {loading.profile ? (
+      <div className="flex flex-col items-center justify-center py-16">
+        <div className="relative">
+          <div className="animate-spin rounded-full h-12 w-12 border-4 border-gray-200 border-t-purple-600"></div>
+          <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-purple-400 animate-pulse"></div>
+        </div>
+        <span className="mt-4 text-lg font-medium text-gray-700">Loading profile...</span>
+        <span className="mt-1 text-sm text-gray-500">Please wait while we fetch your information</span>
+      </div>
+    ) : error.profile ? (
+      <div className="rounded-lg bg-red-50 border border-red-200 p-6">
+        <div className="flex items-center">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-red-400" viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+            </svg>
+          </div>
+          <div className="ml-3">
+            <h3 className="text-sm font-medium text-red-800">Error Loading Profile</h3>
+            <p className="mt-1 text-sm text-red-700">{error.profile}</p>
+          </div>
+        </div>
+      </div>
+    ) : (
+      <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
+        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-6">
+          <div className="flex items-center space-x-4">
+            <div className="h-16 w-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
+              <span className="text-2xl font-bold text-white">
+                {adminData?.admin?.name ? adminData.admin.name.charAt(0).toUpperCase() : 'U'}
+              </span>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold text-white">
+                {adminData?.admin?.name || 'Unknown User'}
+              </h3>
+              <p className="text-purple-100">Administrator Account</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="px-8 py-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <div className="group">
+                <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
+                  <svg className="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                  </svg>
+                  Full Name
+                </label>
+                <div className="bg-gray-50 rounded-lg px-4 py-3 border border-gray-200 group-hover:border-purple-300 transition-colors">
+                  <p className="text-gray-900 font-medium">{adminData?.admin?.name || 'Not specified'}</p>
+                </div>
+              </div>
+              
+              <div className="group">
+                <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
+                  <svg className="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                  </svg>
+                  Email Address
+                </label>
+                <div className="bg-gray-50 rounded-lg px-4 py-3 border border-gray-200 group-hover:border-purple-300 transition-colors">
+                  <p className="text-gray-900 font-medium">{adminData?.admin?.email || 'Not specified'}</p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="group">
+                <label className="flex items-center text-sm font-semibold text-gray-700 mb-3">
+                  <svg className="w-4 h-4 mr-2 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3a2 2 0 012-2h4a2 2 0 012 2v4m-6 0h6a2 2 0 012 2v10a2 2 0 01-2 2H8a2 2 0 01-2-2V9a2 2 0 012-2z"></path>
+                  </svg>
+                  Member Since
+                </label>
+                <div className="bg-gray-50 rounded-lg px-4 py-3 border border-gray-200 group-hover:border-purple-300 transition-colors">
+                  <p className="text-gray-900 font-medium">
+                    {adminData?.admin?.created_at
+                      ? new Date(adminData.admin.created_at).toLocaleDateString('en-US', {
+                          year: 'numeric',
+                          month: 'long',
+                          day: 'numeric'
+                        })
+                      : 'Not available'
+                    }
+                  </p>
+                  {adminData?.admin?.created_at && (
+                    <p className="text-sm text-gray-500 mt-1">
+                      {Math.floor((new Date() - new Date(adminData.admin.created_at)) / (1000 * 60 * 60 * 24))} days ago
+                    </p>
+                  )}
+                </div>
+              </div>
+              
+              <div className="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg p-4 border border-purple-200">
+                <div className="flex items-center space-x-3">
+                  <div className="flex-shrink-0">
+                    <div className="h-8 w-8 bg-purple-100 rounded-full flex items-center justify-center">
+                      <svg className="h-4 w-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-purple-900">Account Status</p>
+                    <p className="text-sm text-purple-700">Active Administrator</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </div>
+);
 
 
   const renderContacts = () => (
@@ -1215,10 +1392,11 @@ const LogoutConfirmationModal = () => {
       case 'projects': return renderProjects();
       case 'contacts': return renderContacts();
       case 'quotes': return renderQuotes();
-      case 'admins': return <div className="text-center py-12 text-gray-500">Admin management coming soon...</div>;
+       case 'profile': return renderProfile();
       default: return renderDashboard();
     }
   };
+  
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -1299,6 +1477,20 @@ const LogoutConfirmationModal = () => {
                 {activeSection === 'dashboard' ? 'Dashboard Overview' : `${activeSection} Management`}
               </h2>
             </div>
+            {/* Add Profile Icon */}
+    <div className="flex items-center space-x-4">
+      <button
+        onClick={() => setActiveSection('profile')}
+        className={`p-2 rounded-lg transition-colors ${
+          activeSection === 'profile' 
+            ? 'bg-purple-100 text-purple-600' 
+            : 'text-gray-400 hover:text-gray-600 hover:bg-gray-100'
+        }`}
+        title="Admin Profile"
+      >
+        <User className="w-6 h-6" />
+      </button>
+    </div>
             
            
           </div>

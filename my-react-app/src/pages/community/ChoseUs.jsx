@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { UserCog, Shield, BarChart3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const WhyChooseUs = () => {
   const controls = useAnimation();
   const [ref, setRef] = useState(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,26 +78,26 @@ const WhyChooseUs = () => {
   };
 
   // Content for the cards - updated for community management
-  const features = [
-    {
-      icon: <UserCog size={24} />,
-      title: "Expert Moderation",
-      description: "Our team of community managers ensures respectful discussions and enforces community guidelines to maintain a healthy environment.",
-      bgColor: "bg-purple-50"
-    },
-    {
-      icon: <Shield size={24} />,
-      title: "Conflict Resolution",
-      description: "We expertly handle sensitive situations and conflicts to keep your community positive, engaged, and growing together.",
-      bgColor: "bg-gray-50"
-    },
-    {
-      icon: <BarChart3 size={24} />,
-      title: "Data-Driven Growth",
-      description: "Track engagement metrics and get actionable insights to optimize your community strategy and foster meaningful connections.",
-      bgColor: "bg-purple-50"
-    }
-  ];
+const features = [
+  {
+    icon: <UserCog size={24} />,
+    title: t('communityManagement.features.moderation.title'),
+    description: t('communityManagement.features.moderation.description'),
+    bgColor: "bg-purple-50"
+  },
+  {
+    icon: <Shield size={24} />,
+    title: t('communityManagement.features.conflict.title'),
+    description: t('communityManagement.features.conflict.description'),
+    bgColor: "bg-gray-50"
+  },
+  {
+    icon: <BarChart3 size={24} />,
+    title: t('communityManagement.features.growth.title'),
+    description: t('communityManagement.features.growth.description'),
+    bgColor: "bg-purple-50"
+  }
+];
 
   return (
     <div className="bg-white py-16 px-4 min-h-screen flex flex-col gap-20 items-center justify-center">
@@ -110,8 +112,7 @@ const WhyChooseUs = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Why Choose Our Community Management
-        </motion.h2>
+          {t('communityManagement.title')}        </motion.h2>
 
         {/* Cards Container */}
         <motion.div 
@@ -152,7 +153,7 @@ const WhyChooseUs = () => {
         </motion.div>
 
       </section>
-      <button onClick={()=> navigate("/packFour")} className='bg-black p-3 px-8 rounded-2xl text-white font-bold hover:bg-violet-800 transition duration-400 cursor-pointer'>Manage Your Community</button>
+      <button onClick={()=> navigate("/packFour")} className='bg-black p-3 px-8 rounded-2xl text-white font-bold hover:bg-violet-800 transition duration-400 cursor-pointer'>{t('communityManagement.manageButton')}</button>
 
     </div>
   );

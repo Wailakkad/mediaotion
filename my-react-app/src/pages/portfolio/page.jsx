@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { motion, useAnimation, AnimatePresence, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { X, ExternalLink, ChevronLeft, ChevronRight, Play, Pause, Globe, Code, Palette, Smartphone } from 'lucide-react';
 
 // Default images for fallback
@@ -10,6 +11,7 @@ import women from "../../assets/imgReviews/women.jpg"
 // Project Modal Component
 const ProjectModal = ({ project, isOpen, onClose }) => {
   if (!project) return null;
+  const { t } = useTranslation();
 
   const getCategoryIcon = (category) => {
     switch (category?.toLowerCase()) {
@@ -116,7 +118,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                         whileTap={{ scale: 0.98 }}
                       >
                         <ExternalLink size={18} />
-                        Visit Website
+                       {t('projects.visitWebsite')}
                       </motion.a>
                     )}
                     
@@ -130,7 +132,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
                         whileTap={{ scale: 0.98 }}
                       >
                         <Code size={18} />
-                        View Code
+                         {t('projects.viewCode')}
                       </motion.a>
                     )}
                   </div>
@@ -146,6 +148,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
 // Carousel Component
 const ProjectCarousel = ({ projects, setSelectedProject }) => {
+  const { t } = useTranslation();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
   const intervalRef = useRef(null);
@@ -202,9 +205,9 @@ const ProjectCarousel = ({ projects, setSelectedProject }) => {
       {/* Carousel Controls */}
       <div className="flex items-center justify-between ">
         <div className="flex items-center gap-4">
-          <h3 className="text-xl font-semibold text-gray-900">
-            Showing {getCurrentSlideProjects().length} of {projects.length} projects
-          </h3>
+         <h3 className="text-xl font-semibold text-gray-900">
+           {t('projects.showing')} {getCurrentSlideProjects().length} {t('projects.of')} {projects.length} {t('projects.projectsCount')}
+         </h3>
           <div className="flex gap-2">
             {Array.from({ length: totalSlides }).map((_, index) => (
               <button
@@ -284,6 +287,7 @@ const ProjectCarousel = ({ projects, setSelectedProject }) => {
 };
 
 const PagePortfolio = () => {
+   const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState(null);
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -397,6 +401,8 @@ const SectionTitle = ({ title, subtitle }) => (
 
 // Projects Section
 const ProjectsSection = ({ projects, loading, error, setSelectedProject }) => {
+     const { t } = useTranslation(); // Add this line
+
   const getCategoryIcon = (category) => {
     switch (category?.toLowerCase()) {
       case 'web development':
@@ -433,15 +439,15 @@ const ProjectsSection = ({ projects, loading, error, setSelectedProject }) => {
   if (error) {
     return (
       <SectionWrapper id="projects">
-        <SectionTitle 
-          title="Featured Projects" 
-          subtitle="Discover our latest work and innovative solutions that drive digital transformation." 
-        />
+<SectionTitle 
+  title={t('projects.title')} 
+  subtitle={t('projects.subtitle')} 
+/>
         <div className="text-center py-12">
           <div className="w-20 h-20 mx-auto mb-6 bg-red-100 rounded-full flex items-center justify-center">
             <X size={32} className="text-red-600" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">Unable to Load Projects</h3>
+<h3 className="text-xl font-semibold text-gray-900 mb-2">{t('projects.unableToLoad')}</h3>
           <p className="text-gray-600">{error}</p>
         </div>
       </SectionWrapper>
@@ -451,17 +457,17 @@ const ProjectsSection = ({ projects, loading, error, setSelectedProject }) => {
   return (
     <SectionWrapper id="projects">
       <SectionTitle 
-        title="Featured Projects" 
-        subtitle="Discover our latest work and innovative solutions that drive digital transformation for businesses worldwide." 
-      />
+  title={t('projects.title')} 
+  subtitle={t('projects.subtitle')} 
+/>
 
       {projects.length === 0 ? (
         <div className="text-center py-12">
           <div className="w-20 h-20 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center">
             <Code size={32} className="text-gray-400" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-2">No Projects Found</h3>
-          <p className="text-gray-600">Projects will appear here once they're added to the database.</p>
+          <h3 className="text-xl font-semibold text-gray-900 mb-2">{t('projects.noProjectsFound')}</h3>
+          <p className="text-gray-600">{t('projects.noProjectsMessage')}</p>
         </div>
       ) : (
         <ProjectCarousel projects={projects} setSelectedProject={setSelectedProject} />
@@ -471,6 +477,7 @@ const ProjectsSection = ({ projects, loading, error, setSelectedProject }) => {
 };
 
 const ProjectCard = ({ project, index, onClick }) => {
+  const { t } = useTranslation();
   const controls = useAnimation();
   const ref = React.useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
@@ -525,7 +532,7 @@ const ProjectCard = ({ project, index, onClick }) => {
           <>
             <img 
               src={`http://localhost:5000/images/portfolio/${project.image_url}`} 
-              alt={project.tittle || project.title || "Project"} 
+              alt={project.tittle || project.title || t('common.untitledProject')} 
               className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
               onError={(e) => {
                 e.target.style.display = 'none';
@@ -540,7 +547,7 @@ const ProjectCard = ({ project, index, onClick }) => {
             <div className="w-16 h-16 mx-auto mb-2 bg-white rounded-xl flex items-center justify-center shadow-lg">
               {getCategoryIcon(project.category)}
             </div>
-            <p className="text-sm text-gray-600 font-medium">{project.tittle || project.title || "Project"}</p>
+            <p className="text-sm text-gray-600 font-medium">{project.tittle || project.title || t('common.untitledProject')}</p>
           </div>
         </div>
         
@@ -581,7 +588,7 @@ const ProjectCard = ({ project, index, onClick }) => {
             className="text-sm font-semibold flex items-center gap-2 text-violet-600 hover:text-violet-700 group-hover:translate-x-1 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
           >
-            View Project
+           {t('projects.viewProject')}
             <motion.span
               className="text-violet-400"
               animate={{ x: [0, 4, 0] }}
@@ -613,25 +620,27 @@ const ProjectCard = ({ project, index, onClick }) => {
 
 // Testimonials Section with enhanced design
 const TestimonialsSection = () => {
+  const { t } = useTranslation(); // Add this line
+  
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      position: "CEO, TechStart",
-      text: "Working with Media Motion transformed our online presence. The attention to detail and creative solutions exceeded our expectations. Our ROI increased by 300% within the first quarter.",
+      name: t('testimonials.clients.sarah.name'),
+      position: t('testimonials.clients.sarah.position'),
+      text: t('testimonials.clients.sarah.text'),
       avatar: men1,
       rating: 5
     },
     {
-      name: "Michael Chen",
-      position: "Marketing Director, Bravo Inc",
-      text: "Incredible work ethic and design talent. Our conversion rates improved by 40% after implementing the new website design by Media Motion. Truly a game-changing partnership.",
+      name: t('testimonials.clients.michael.name'),
+      position: t('testimonials.clients.michael.position'),
+      text: t('testimonials.clients.michael.text'),
       avatar: men2,
       rating: 5
     },
     {
-      name: "Emma Rodriguez",
-      position: "Founder, Design Studio",
-      text: "The most reliable agency we've worked with. Media Motion delivers on time, communicates clearly, and produces exceptional quality work that consistently exceeds industry standards.",
+      name: t('testimonials.clients.emma.name'),
+      position: t('testimonials.clients.emma.position'),
+      text: t('testimonials.clients.emma.text'),
       avatar: women,
       rating: 5
     }
@@ -645,10 +654,10 @@ const TestimonialsSection = () => {
       <div className="absolute bottom-10 right-10 w-40 h-40 bg-purple-200 rounded-full mix-blend-multiply filter blur-xl opacity-30"></div>
       
       <div className="relative z-10">
-        <SectionTitle 
-          title="Client Stories" 
-          subtitle="Hear from the visionary leaders who trusted us to transform their digital presence and achieve remarkable results." 
-        />
+       <SectionTitle 
+          title={t('testimonials.title')} 
+          subtitle={t('testimonials.subtitle')} 
+       />
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {testimonials.map((testimonial, index) => (
@@ -735,7 +744,7 @@ const TestimonialCard = ({ testimonial, index }) => {
         </div>
       </div>
       
-      {/* Decorative elements */}
+      { /*   Decorative elements   */ }
       <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-violet-800 to-purple-200 rounded-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
       <div className="absolute bottom-4 left-4 w-6 h-6 bg-gradient-to-br from-purple-200 to-indigo-200 rounded-full opacity-30 group-hover:opacity-70 transition-opacity duration-500"></div>
     </motion.div>

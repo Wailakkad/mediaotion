@@ -19,6 +19,6 @@ router.get('/projects', getAllProjects);
 
 router.post('/Addproject', VerifyToken ,  upload.single('image') , AddProject);
 
-router.delete('/DeleteProject/:id', DeleteProject);
+router.delete('/DeleteProject/:id', VerifyToken , DeleteProject);
 
 module.exports = router;

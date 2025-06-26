@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useAnimation, useInView, AnimatePresence } from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
+
 
 // Import your logos
 import logo1 from "../assets/logose/logo1.png";
@@ -26,6 +28,7 @@ import logo21 from "../assets/logose/logo21.png";
 import logo22 from "../assets/logose/logo22.png";
 
 const LogosSlider = () => {
+  const { t } = useTranslation();
   // Logo data
   const logos = [
     { id: 1, path: logo1, name: "Company 1" },
@@ -197,14 +200,14 @@ const LogosSlider = () => {
             variants={headerVariants}
             className="text-sm font-semibold text-violet-600 uppercase tracking-wider mb-2"
           >
-            Partnerships
+            {t('Partnerships')}
           </motion.p>
           <motion.h2 
             variants={headerVariants}
             className="text-4xl font-extrabold text-gray-900 sm:text-5xl"
           >
             <span className="relative inline-block">
-              <span className="relative z-10">Our Trusted Partners</span>
+              <span className="relative z-10">{t('PartnerTittle')}</span>
               <motion.span 
                 initial={{ width: "0%" }}
                 animate={{ width: "100%" }}
@@ -217,7 +220,7 @@ const LogosSlider = () => {
             variants={headerVariants}
             className="mt-4 max-w-2xl mx-auto text-xl text-gray-500"
           >
-            Working with industry leaders to deliver exceptional value
+            {t('PartnerDescription')}
           </motion.p>
         </motion.div>
         

@@ -2,11 +2,13 @@ import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Users, LayoutDashboard, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const WhyChooseUs = () => {
   const controls = useAnimation();
   const [ref, setRef] = useState(null);
   const navigate = useNavigate();
+  const { t } = useTranslation();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,26 +78,26 @@ const WhyChooseUs = () => {
   };
 
   // Content for the cards
-  const features = [
-    {
-      icon: <Users size={24} />,
-      title: "Tailored Design",
-      description: "We create custom websites that align with your brand identity and specific goals, ensuring a unique online presence.",
-      bgColor: "bg-purple-50"
-    },
-    {
-      icon: <LayoutDashboard size={24} />,
-      title: "User-Focused",
-      description: "Our designs prioritize a seamless user experience, making navigation intuitive and engaging for your visitors.",
-      bgColor: "bg-gray-50"
-    },
-    {
-      icon: <TrendingUp size={24} />,
-      title: "Measurable Success",
-      description: "Obtains video order to optimize focally outstanding insights.",
-      bgColor: "bg-purple-50"
-    }
-  ];
+ const features = [
+  {
+    icon: <Users size={24} />,
+    title: t('whyChooseUs.features.tailored.title'),
+    description: t('whyChooseUs.features.tailored.description'),
+    bgColor: "bg-purple-50"
+  },
+  {
+    icon: <LayoutDashboard size={24} />,
+    title: t('whyChooseUs.features.userFocused.title'),
+    description: t('whyChooseUs.features.userFocused.description'),
+    bgColor: "bg-gray-50"
+  },
+  {
+    icon: <TrendingUp size={24} />,
+    title: t('whyChooseUs.features.measurable.title'),
+    description: t('whyChooseUs.features.measurable.description'),
+    bgColor: "bg-purple-50"
+  }
+];
 
   return (
     <div className="bg-white py-16 px-4 min-h-screen flex flex-col gap-20 items-center justify-center">
@@ -110,7 +112,7 @@ const WhyChooseUs = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          Why Choose Us
+         {t('whyChooseUs.title')}
         </motion.h2>
 
         {/* Cards Container */}
@@ -152,7 +154,7 @@ const WhyChooseUs = () => {
         </motion.div>
 
       </section>
-      <button onClick={()=> navigate("/packThree") } className='bg-black p-3 px-8 rounded-2xl text-white font-bold hover:bg-violet-800 transition duration-400 cursor-pointer'>Start now</button>
+      <button onClick={()=> navigate("/packThree") } className='bg-black p-3 px-8 rounded-2xl text-white font-bold hover:bg-violet-800 transition duration-400 cursor-pointer'>{t('whyChooseUs.startNow')}</button>
 
     </div>
   );

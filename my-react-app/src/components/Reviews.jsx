@@ -2,9 +2,11 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Star, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 
 const Testimonials = () => {
+  const {t} = useTranslation();
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const navigate = useNavigate(); // Add this line
@@ -13,26 +15,26 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      name: "John Doe",
-      role: "CEO, TechCorp",
+      name: t('testimonial1Name'),
+      role: t('testimonial1Role'),
       avatarUrl: "https://randomuser.me/api/portraits/men/32.jpg",
-      content: "Working with this team was a game-changer for our business. Our online presence has improved dramatically, and we've seen a significant increase in customer engagement.",
+      content: t('testimonial1Content'),
       rating: 5
     },
     {
       id: 2,
-      name: "Jane Smith",
-      role: "Marketing Director, GrowthCo",
+      name: t('testimonial2Name'),
+      role: t('testimonial2Role'),
       avatarUrl: "https://randomuser.me/api/portraits/women/44.jpg",
-      content: "The website they designed for us exceeded our expectations. It's not only beautiful but also highly functional and has helped us attract new clients consistently.",
+      content: t('testimonial2Content'),
       rating: 5
     },
     {
       id: 3,
-      name: "Robert Johnson",
-      role: "Owner, Retail Solutions",
+      name: t('testimonial3Name'),
+      role: t('testimonial3Role'),
       avatarUrl: "https://randomuser.me/api/portraits/men/65.jpg",
-      content: "Their digital marketing strategies transformed our online presence. We've seen a 200% increase in leads since we started working with them. Highly recommended!",
+      content: t('testimonial3Content'),
       rating: 5
     }
   ];
@@ -126,7 +128,7 @@ const Testimonials = () => {
   );
 
   return (
-    <section ref={sectionRef} className="py-16 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden bg-gray-50">
+    <section ref={sectionRef} className="py-16 px-4 md:px-6 lg:px-8 max-w-7xl mx-auto overflow-hidden bg-gray-50 rounded-4xl">
       <motion.div
         className="text-center mb-16"
         initial="hidden"
@@ -137,7 +139,7 @@ const Testimonials = () => {
           className="text-3xl md:text-4xl font-bold text-gray-800 mb-4"
           variants={headingVariants}
         >
-          What Our Clients Say
+          {t('testimonialsTitle')}
         </motion.h2>
         
         <motion.div 
@@ -149,7 +151,7 @@ const Testimonials = () => {
           className="text-gray-600 max-w-2xl mx-auto"
           variants={descriptionVariants}
         >
-          Don't just take our word for it. Here's what our clients have to say about their experience working with us.
+           {t('testimonialsDescription')}
         </motion.p>
       </motion.div>
 
@@ -199,8 +201,8 @@ const Testimonials = () => {
         initial="hidden"
         animate="visible"
       >
-        <h3 className="text-2xl md:text-3xl font-bold mb-4">Ready to Transform Your Digital Presence?</h3>
-        <p className="max-w-lg mx-auto mb-8">Take the first step towards growing your business online. Contact us today for a free consultation.</p>
+        <h3 className="text-2xl md:text-3xl font-bold mb-4">{t('ctaTitle')}</h3>
+        <p className="max-w-lg mx-auto mb-8">{t('ctaDescription')}</p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <motion.button 
@@ -211,7 +213,7 @@ const Testimonials = () => {
             whileTap="tap"
             onClick={() => navigate('/packOne')}
           >
-            Get Started
+            {t('getStarted')}
             <ArrowRight className="ml-2 w-4 h-4" />
           </motion.button>
           
@@ -223,7 +225,7 @@ const Testimonials = () => {
             whileHover="hover"
             whileTap="tap"
           >
-            Learn More
+            {t('learnMore')}
           </motion.button>
         </div>
       </motion.div>

@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { Check, ArrowRight, Monitor, Palette, Video } from 'lucide-react';
+import { useTranslation } from 'react-i18next'; 
 
 export default function PricingSection() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const { t } = useTranslation();
 
   // Function to handle checkout navigation
   const handleCheckout = (packageName, price) => {
@@ -18,13 +20,15 @@ export default function PricingSection() {
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl">
+    <div className="bg-gradient-to-b from-gray-50 to-white py-20 px-4 sm:px-6 lg:px-8 mx-auto max-w-7xl mt-30">
+     
+
       <div className="text-center mb-16">
         <h2 className="text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-black to-violet-700">
-          Nos packs / Services
+          {t('pricingSection.title')}
         </h2>
         <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-          Choisissez le pack qui correspond le mieux à vos besoins et à votre budget.
+          {t('pricingSection.subtitle')}
         </p>
       </div>
 
@@ -34,23 +38,17 @@ export default function PricingSection() {
           icon={<Monitor />}
           iconColor="text-gray-700"
           iconBg="bg-gray-100"
-          title="Pack Site Vitrine"
-          price="5000"
-          description="Donnez vie à votre présence en ligne avec un site élégant et performant."
-          features={[
-            "Jusqu'à 3 pages professionnelles",
-            "Design sur mesure et attractif",
-            "Responsive design (mobile, tablette, desktop)",
-            "Optimisation SEO de base",
-            "Intégration de vos contenus (textes, images, formulaires)",
-          ]}
-          idealFor="Idéal pour : Artisans, commerçants, consultants, indépendants"
+          title={t('servicePackages.siteVitrine.title')}
+          price={t('servicePackages.siteVitrine.price')}
+          description={t('servicePackages.siteVitrine.description')}
+          features={t('servicePackages.siteVitrine.features')}
+          idealFor={t('servicePackages.siteVitrine.idealFor')}
           buttonVariant="outline"
           isHovered={hoveredCard === 'site-vitrine'}
           onMouseEnter={() => setHoveredCard('site-vitrine')}
           onMouseLeave={() => setHoveredCard(null)}
           delay={0.1}
-          onCheckout={() => handleCheckout('Pack Site Vitrine', '5000')}
+          onCheckout={() => handleCheckout(t('servicePackages.siteVitrine.title'), t('servicePackages.siteVitrine.price'))}
         />
 
         {/* Pack Identité Visuelle */}
@@ -58,23 +56,18 @@ export default function PricingSection() {
           icon={<Palette />}
           iconColor="text-violet-600"
           iconBg="bg-violet-100"
-          title="Pack Identité Visuelle"
-          price="900"
-          description="Posez les bases d'une image de marque forte et cohérente."
-          features={[
-            "2 propositions de logo personnalisées",
-            "Design 100% original",
-            "Livraison du logo HD + carte de visite",
-            "Délai express : 48h",
-          ]}
-          idealFor="Idéal pour : Startups, auto-entrepreneurs, nouvelles marques"
+          title={t('servicePackages.identiteVisuelle.title')}
+          price={t('servicePackages.identiteVisuelle.price')}
+          description={t('servicePackages.identiteVisuelle.description')}
+          features={t('servicePackages.identiteVisuelle.features')}
+          idealFor={t('servicePackages.identiteVisuelle.idealFor')}
           buttonVariant="gradient"
           featured={true}
           isHovered={hoveredCard === 'identite-visuelle'}
           onMouseEnter={() => setHoveredCard('identite-visuelle')}
           onMouseLeave={() => setHoveredCard(null)}
           delay={0.2}
-          onCheckout={() => handleCheckout('Pack Identité Visuelle', '900')}
+          onCheckout={() => handleCheckout(t('servicePackages.identiteVisuelle.title'), t('servicePackages.identiteVisuelle.price'))}
         />
 
         {/* Pack Motion Design */}
@@ -82,27 +75,22 @@ export default function PricingSection() {
           icon={<Video />}
           iconColor="text-gray-700"
           iconBg="bg-gray-100"
-          title="Pack Motion Design"
-          price="4500"
-          description="Communiquez efficacement avec une vidéo animée professionnelle."
-          features={[
-            "Vidéo animée jusqu'à 60 secondes",
-            "Storyboard sur mesure",
-            "Musique de fond libre de droits",
-            "Texte ou voix-off (jusqu'à 150 mots)",
-          ]}
-          idealFor="Idéal pour : Réseaux sociaux, présentations, campagnes de lancement"
+          title={t('servicePackages.motionDesign.title')}
+          price={t('servicePackages.motionDesign.price')}
+          description={t('servicePackages.motionDesign.description')}
+          features={t('servicePackages.motionDesign.features')}
+          idealFor={t('servicePackages.motionDesign.idealFor')}
           buttonVariant="filled"
           isHovered={hoveredCard === 'motion-design'}
           onMouseEnter={() => setHoveredCard('motion-design')}
           onMouseLeave={() => setHoveredCard(null)}
           delay={0.3}
-          onCheckout={() => handleCheckout('Pack Motion Design', '4500')}
+          onCheckout={() => handleCheckout(t('servicePackages.motionDesign.title'), t('servicePackages.motionDesign.price'))}
         />
       </div>
 
       <div className="mt-16 text-center">
-        <p className="text-gray-500 text-sm">Des questions? Contactez notre équipe pour un devis personnalisé</p>
+        <p className="text-gray-500 text-sm">{t('pricingSection.contactText')}</p>
       </div>
     </div>
   );
@@ -125,6 +113,8 @@ function PricingCard({
   onCheckout,
   delay = 0
 }) {
+  const { t } = useTranslation();
+
   // Animation values
   const translateY = isHovered ? "-translate-y-2" : "translate-y-0";
   const scale = isHovered ? "scale-[1.03]" : "scale-100";
@@ -170,7 +160,7 @@ function PricingCard({
         
         {featured && (
           <div className="absolute top-0 right-0 bg-gradient-to-r from-violet-600 to-black text-white text-xs font-bold py-1 px-3 rounded-bl-lg rounded-tr-lg z-10">
-            Populaire
+            {t('pricingSection.popular')}
           </div>
         )}
 
@@ -185,22 +175,24 @@ function PricingCard({
           
           <div className="flex items-baseline mb-2">
             <span className="text-4xl font-extrabold">{price}</span>
-            <span className="text-gray-500 ml-2 text-base">MAD</span>
+            <span className="text-gray-500 ml-2 text-base">{t('pricingSection.currency')}</span>
           </div>
           
           <p className="text-gray-600 mb-6">{description}</p>
           
-          <p className="font-medium mb-4"><strong>Ce qui est inclus</strong> :</p>
+          <p className="font-medium mb-4"><strong>{t('pricingSection.whatIsIncluded')}</strong> :</p>
           
           <ul className="space-y-4 mb-6">
-            {features.map((text, idx) => (
+            {Array.isArray(features) ? features.map((text, idx) => (
               <Feature 
                 key={idx} 
                 text={text} 
                 isHovered={isHovered}
                 delay={idx * 0.05}
               />
-            ))}
+            )) : (
+              <li className="text-gray-600">Loading features...</li>
+            )}
           </ul>
           
           <p className="text-sm font-medium text-green-600 mb-8">{idealFor}</p>
@@ -215,7 +207,7 @@ function PricingCard({
             `}
             onClick={onCheckout}
           >
-            <span>Commander</span>
+            <span>{t('pricingSection.orderButton')}</span>
             <ArrowRight className={`ml-2 w-5 h-5 transition-transform duration-300 ${isHovered ? "translate-x-1" : ""} group-hover:translate-x-1`} />
           </button>
         </div>

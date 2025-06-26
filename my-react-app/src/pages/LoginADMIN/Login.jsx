@@ -200,20 +200,14 @@ const AdminLogin = () => {
                 </div>
               </motion.div>
 
-              {/* Remember Me & Forgot Password */}
+              {/*  Forgot Password */}
               <motion.div 
                 className="flex items-center justify-between text-sm"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                <label className="flex items-center">
-                  <input
-                    type="checkbox"
-                    className="w-4 h-4 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
-                  />
-                  <span className="ml-2 text-gray-600">Remember me</span>
-                </label>
+               
                 <a href="#" className="text-purple-600 hover:text-purple-800 transition-colors">
                   Forgot password?
                 </a>

@@ -1,9 +1,11 @@
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { useState, useRef, useEffect } from 'react';
 import { Check, Globe, Rocket, ShoppingBag } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function PricingTable() {
   const [hoveredCard, setHoveredCard] = useState(null);
+  const { t } = useTranslation();
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-100px' });
   const controls = useAnimation();
@@ -14,59 +16,41 @@ export default function PricingTable() {
     }
   }, [inView, controls]);
 
-  const plans = [
-    {
-      id: 'basic',
-      title: '5000 MAD',
-      subtitle: 'Pack Basic',
-      description: "L'essentiel pour une présence en ligne professionnelle.",
-      features: [
-        'Site vitrine de 1 à 3 pages',
-        'Design responsive (mobile, tablette, desktop)',
-        'Interface attractive et claire',
-        'Optimisation SEO de base',
-        '1 séance de consulting gratuite'
-      ],
-      idealFor: 'Indépendants, artisans, petites structures',
-      featured: false,
-      color: 'bg-white',
-      icon: <Globe className="w-8 h-8 text-purple-500" />
-    },
-    {
-      id: 'startup',
-      title: '8500 MAD',
-      subtitle: 'Pack Start-up',
-      description: "Un site robuste pour lancer et développer votre activité.",
-      features: [
-        'Site de 1 à 10 pages',
-        'Design avancé et personnalisé',
-        'Optimisation SEO avancée',
-        'Compatible tous supports',
-        '2 séances de consulting offertes'
-      ],
-      idealFor: 'PME, projets en lancement, agences',
-      featured: true,
-      color: 'bg-black',
-      icon: <Rocket className="w-8 h-8 text-purple-300" />
-    },
-    {
-      id: 'ecommerce',
-      title: '15000 MAD',
-      subtitle: 'Pack E-commerce',
-      description: "Une boutique en ligne professionnelle, évolutive et performante.",
-      features: [
-        'Produits en illimité',
-        'Site 100% responsive',
-        'Design moderne et ergonomique',
-        'SEO naturel pour visibilité optimale',
-        '3 séances de consulting personnalisées'
-      ],
-      idealFor: 'Boutiques en ligne, commerçants, marques',
-      featured: false,
-      color: 'bg-white',
-      icon: <ShoppingBag className="w-8 h-8 text-purple-500" />
-    }
-  ];
+ const plans = [
+  {
+    id: 'basic',
+    title: '5000 MAD',
+    subtitle: t('pricing.plans.basic.subtitle'),
+    description: t('pricing.plans.basic.description'),
+    features: t('pricing.plans.basic.features', { returnObjects: true }),
+    idealFor: t('pricing.plans.basic.idealFor'),
+    featured: false,
+    color: 'bg-white',
+    icon: <Globe className="w-8 h-8 text-purple-500" />
+  },
+  {
+    id: 'startup',
+    title: '8500 MAD',
+    subtitle: t('pricing.plans.startup.subtitle'),
+    description: t('pricing.plans.startup.description'),
+    features: t('pricing.plans.startup.features', { returnObjects: true }),
+    idealFor: t('pricing.plans.startup.idealFor'),
+    featured: true,
+    color: 'bg-black',
+    icon: <Rocket className="w-8 h-8 text-purple-300" />
+  },
+  {
+    id: 'ecommerce',
+    title: '15000 MAD',
+    subtitle: t('pricing.plans.ecommerce.subtitle'),
+    description: t('pricing.plans.ecommerce.description'),
+    features: t('pricing.plans.ecommerce.features', { returnObjects: true }),
+    idealFor: t('pricing.plans.ecommerce.idealFor'),
+    featured: false,
+    color: 'bg-white',
+    icon: <ShoppingBag className="w-8 h-8 text-purple-500" />
+  }
+];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -123,7 +107,7 @@ export default function PricingTable() {
   return (
     <div
       ref={ref}
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-50 to-purple-200 p-4 py-16"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-purple-50 to-purple-200 p-4 py-16 rounded-3xl"
     >
           <motion.h1 
         className="text-4xl font-bold mb-4 text-center text-gray-800"
@@ -131,7 +115,7 @@ export default function PricingTable() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        Nos Offres
+        {t('pricing.title')}
       </motion.h1>
       
       <motion.p 
@@ -140,7 +124,7 @@ export default function PricingTable() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        Des solutions adaptées à tous vos besoins numériques
+        {t('pricing.subtitle')}
       </motion.p>
 
       <motion.div
@@ -187,7 +171,7 @@ export default function PricingTable() {
 
               <div className="mb-6">
                 <h4 className={`text-sm font-medium mb-3 ${plan.featured ? 'text-purple-200' : 'text-purple-600'}`}>
-                  Ce qui est inclus :
+                  {t('pricing.included')}
                 </h4>
                 <div className="flex flex-col gap-3">
                   {plan.features.map((feature, idx) => (
@@ -207,7 +191,7 @@ export default function PricingTable() {
               <div className="mt-auto pt-6">
                 <div className={`mb-4 p-3 rounded-lg ${plan.featured ? 'bg-purple-800' : 'bg-purple-100'}`}>
                   <h4 className={`text-xs font-medium mb-1 ${plan.featured ? 'text-purple-200' : 'text-purple-600'}`}>
-                    ✅ Idéal pour :
+                    {t('pricing.idealFor')}
                   </h4>
                   <p className="text-sm">
                     {plan.idealFor}
@@ -219,7 +203,7 @@ export default function PricingTable() {
                   whileHover="hover"
                   whileTap="tap"
                 >
-                  Choisir ce pack
+                  {t('pricing.choosePackage')}
                 </motion.button>
               </div>
             </div>
