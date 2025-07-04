@@ -9,6 +9,7 @@ import WhyChooseUs from '../components/ChousUs';
 import PricingTable from '../components/WebsitePackages';
 import FeaturesGrid from '../components/Get';
 import { useTranslation } from 'react-i18next';
+
 const HeroSection = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -18,8 +19,22 @@ const HeroSection = () => {
     setIsLoaded(true);
   }, []);
 
+  // Button click handlers
+  const handleGetStartedClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate("/packThree");
+  };
+
+  const handleLearnMoreClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate("/f&q");
+  };
+
   return (
-    <div className="bg- w-full py-12 px-4 sm:px-12 md:px-16 lg:px-20 rounded-lg overflow-hidden mt-40">
+    <div className="bg-white w-full py-12 px-4 sm:px-12 md:px-16 lg:px-20 rounded-lg overflow-hidden mt-40 relative z-10">
+      {/* Hero Section */}
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
         {/* Left Side - Text Content */}
         <motion.div 
@@ -47,25 +62,37 @@ const HeroSection = () => {
           </motion.p>
           
           <motion.div 
-            className="flex flex-wrap gap-4"
+            className="flex flex-wrap gap-4 relative z-20"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.button 
-              onClick={() => navigate("/packThree")}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300"
+              onClick={handleGetStartedClick}
+              className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 cursor-pointer relative z-30 border-none outline-none"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              style={{ 
+                pointerEvents: 'auto',
+                position: 'relative',
+                zIndex: 999,
+                minHeight: '44px' // Ensure proper touch target
+              }}
             >
                {t('hero.getStarted')}
             </motion.button>
             
             <motion.button 
-              onClick={() => navigate("/f&q")}
-              className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300"
+              onClick={handleLearnMoreClick}
+              className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 cursor-pointer relative z-30 border-none outline-none"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              style={{ 
+                pointerEvents: 'auto',
+                position: 'relative',
+                zIndex: 999,
+                minHeight: '44px' // Ensure proper touch target
+              }}
             >
               {t('hero.learnMore')}
             </motion.button>
@@ -174,7 +201,6 @@ const HeroSection = () => {
               />
             </motion.div>
 
-         
             {/* Selection corners/handles */}
             {[
               { position: "top-0 right-8", delay: 1.6 },
@@ -196,17 +222,17 @@ const HeroSection = () => {
           </div>
         </motion.div>
       </div>
-        <div className="">
-            <WhyChooseUs />
-        </div>
-        <div className="">
-            <PricingTable />
-        </div>
-        <div className="">
-            <FeaturesGrid />
-        </div>
+      
+      <div className="">
+          <WhyChooseUs />
+      </div>
+      <div className="">
+          <PricingTable />
+      </div>
+      <div className="">
+          <FeaturesGrid />
+      </div>
     </div>
-   
   );
 };
 

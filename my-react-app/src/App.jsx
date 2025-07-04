@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { Route, Routes, Link , useLocation , useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-  import PremiumServices from './components/PremiemServices';
+import ChatAssistant from './components/ChatAssistant.jsx';  
+import PremiumServices from './components/PremiemServices';
   import LogosSlider from './components/LogosSlider';
   import WhyChooseUs from './components/WhyChoseUs';
   import Logo from "./assets/Logo.png";
@@ -28,6 +29,7 @@ import { motion, AnimatePresence } from 'framer-motion';
   import ServicesPage from "./pages/services/page.jsx";
   import ProtectedRoute from "./outils/ProtecteRoutes.jsx";
   import { Facebook, Twitter, Instagram, Linkedin, MapPin,  Mail } from 'lucide-react';
+  import vedio from "./assets/vedio.mp4";
   
 export default function   App() {
 
@@ -45,13 +47,14 @@ export default function   App() {
    const Home = () => { 
     const navigate = useNavigate();
     const {t} = useTranslation();
+    const [showVideoModal, setShowVideoModal] = useState(false);
     return (
-      <div className="min-h-screen relative overflow-hidden px-4 sm:px-8 md:px-12 lg:px-20 mt-60">
+      <div className="min-h-screen relative overflow-hidden px-4 sm:px-8 md:px-12 lg:px-20 mt-50">
        {/* Hero Section */}
         
         <div className="container mx-auto">
           {/* Animated Wave Background */}
-<div className="absolute inset-0 -z-10">
+          <div className="absolute inset-0 -z-10">
   {/* Base gradient background with modern feel */}
   <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-indigo-50/30"></div>
   
@@ -175,11 +178,11 @@ export default function   App() {
       delay: 1
     }}
   />
-</div>
+           </div>
           <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12">
             
             {/* Left Column - Text */}
-<div className="flex flex-col space-y-6">
+            <div className="flex flex-col space-y-6">
   {/* Tech Badge */}
   <motion.div
     initial={{ opacity: 0, y: -20 }}
@@ -241,7 +244,7 @@ export default function   App() {
     </motion.button>
 
     <motion.button
-      onClick={() => navigate('/demo')}
+      onClick={() => setShowVideoModal(true)}
       className="border-2 border-gray-300 hover:border-purple-400 text-gray-700 hover:bg-gradient-to-r hover:from-purple-50 hover:to-blue-50 hover:text-purple-700 py-4 px-8 rounded-xl transition-all duration-300 font-semibold backdrop-blur-sm group"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
@@ -255,7 +258,7 @@ export default function   App() {
     </motion.button>
   </motion.div>
 
-</div>
+             </div>
   
             {/* Right Column - Image */}
             <motion.div 
@@ -550,6 +553,75 @@ export default function   App() {
               </div>
             </motion.div>
           </div>
+
+          {/* Video Demo Modal */}
+          <AnimatePresence>
+  {showVideoModal && (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+      onClick={() => setShowVideoModal(false)}
+    >
+      <motion.div
+        initial={{ scale: 0.5, opacity: 0, y: 50 }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.5, opacity: 0, y: 50 }}
+        transition={{ 
+          type: "spring", 
+          stiffness: 300, 
+          damping: 25,
+          mass: 0.8 
+        }}
+        className="relative max-w-4xl w-full mx-4 bg-white rounded-3xl shadow-2xl overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Modal Header */}
+        <div className="bg-gradient-to-r from-purple-600 to-indigo-600 p-6 text-white">
+          <div className="flex justify-between items-center">
+            <h3 className="text-2xl font-bold">Product Demo</h3>
+            <motion.button
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setShowVideoModal(false)}
+              className="p-2 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </motion.button>
+          </div>
+        </div>
+
+        {/* Video Container */}
+        <div className="relative aspect-video bg-gray-900">
+          <video
+            controls
+            autoPlay
+            className="w-full h-full object-cover"
+            poster="https://via.placeholder.com/800x450/6366f1/ffffff?text=Demo+Video"
+          >
+            <source src={vedio} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          
+          {/* Video Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        </div>
+
+        {/* Modal Footer */}
+        <div className="p-6 bg-black">
+          <p className="text-white text-center">
+            See how our solutions can transform your business operations
+          </p>
+        </div>
+      </motion.div>
+    </motion.div>
+  )}
+          </AnimatePresence>
+
+          <ChatAssistant/>
         </div>
         {/* Premium Services Section */}
         <div className="container mx-auto mt-50 ">

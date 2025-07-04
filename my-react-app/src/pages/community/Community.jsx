@@ -15,6 +15,20 @@ const HeroSection = () => {
     setIsLoaded(true);
   }, []);
 
+  
+  // Button click handlers
+  const handleGetStartedClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate("/packFour");
+  };
+
+  const handleLearnMoreClick = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigate("/f&q");
+  };
+
   return (
     <div className="bg- w-full py-12 px-4 sm:px-12 md:px-16 lg:px-20 rounded-lg overflow-hidden mt-40">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between">
@@ -48,18 +62,30 @@ const HeroSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
           >
             <motion.button 
-            onClick={() => navigate("/packFour")}
-              className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300"
+            onClick={handleGetStartedClick}
+              className="bg-purple-600 hover:bg-purple-700 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 cursor-pointer relative z-30 border-none outline-none"
               whileHover={{ scale: 1.03 }}
+               style={{ 
+                pointerEvents: 'auto',
+                position: 'relative',
+                zIndex: 999,
+                minHeight: '44px' // Ensure proper touch target
+              }}
               whileTap={{ scale: 0.97 }}
             >
                {t('community.getStarted')}
             </motion.button>
             
             <motion.button
-              onClick={() => navigate("/f&q")} 
-              className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-2 px-6 rounded-md transition-colors duration-300"
+             onClick={handleLearnMoreClick}
+              className="bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-md transition-colors duration-300 cursor-pointer relative z-30 border-none outline-none"
               whileHover={{ scale: 1.03 }}
+               style={{ 
+                pointerEvents: 'auto',
+                position: 'relative',
+                zIndex: 999,
+                minHeight: '44px' // Ensure proper touch target
+              }}
               whileTap={{ scale: 0.97 }}
             >
               {t('community.learnMore')}

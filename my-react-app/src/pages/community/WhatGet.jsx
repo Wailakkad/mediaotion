@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useState, useRef } from 'react';
 import { Share2, PenTool, BarChart3, Users, ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 export default function FeaturesGrid() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const {t} = useTranslation();
@@ -235,7 +236,8 @@ export default function FeaturesGrid() {
         animate={inView ? "visible" : "hidden"}
       >
         {features.map((feature, index) => (
-          <motion.div
+         <Link to="/packFour">
+           <motion.div
             key={feature.id}
             className="group cursor-pointer"
             variants={cardVariants}
@@ -302,10 +304,12 @@ export default function FeaturesGrid() {
               </div>
             </motion.div>
           </motion.div>
+         </Link>
         ))}
       </motion.div>
       
-      <motion.button 
+     <Link to="/packFour">
+         <motion.button 
         className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white font-bold py-4 px-10 rounded-2xl mt-16 relative overflow-hidden group border border-gray-700"
         variants={buttonVariants}
         initial="hidden"
@@ -319,6 +323,7 @@ export default function FeaturesGrid() {
         </span>
         <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </motion.button>
+     </Link>
     </div>
   );
 }

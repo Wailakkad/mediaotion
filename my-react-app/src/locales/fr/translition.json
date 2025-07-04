@@ -735,6 +735,98 @@
       "communityManagement": "Community Management",
       "seo": "Optimisation SEO"
     }
+  } , 
+
+
+
+  "checkout": {
+    "title": "Commande",
+    "description": "Finalisez votre commande pour le service {{service}} que vous avez choisi.",
+    "billingDetails": {
+      "title": "Détails de facturation",
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "company": "Entreprise (Optionnel)",
+      "email": "Email",
+      "country": "Pays",
+      "streetAddress": "Adresse",
+      "city": "Ville",
+      "state": "État/Province",
+      "phone": "Téléphone",
+      "orderNotes": "Notes de commande (Optionnel)",
+      "orderNotesPlaceholder": "Notes spéciales pour votre commande ou instructions de livraison",
+      "required": "*"
+    },
+    "orderReview": {
+      "title": "Révision de commande",
+      "service": "Service",
+      "qty": "Qté",
+      "total": "Total",
+      "estimatedDelivery": "Livraison estimée",
+      "deliveryDescription": "Votre projet sera livré dans 2-3 semaines après confirmation de la commande."
+    },
+    "payment": {
+      "title": "Méthodes de paiement",
+      "cashOnDelivery": "Paiement à la livraison",
+      "cashDescription": "Payez en espèces à la livraison.",
+      "privacyText": "Vos données personnelles seront utilisées pour traiter votre commande, soutenir votre expérience sur ce site web, et pour d'autres objectifs décrits dans notre politique de confidentialité.",
+      "termsText": "J'ai lu et j'accepte les conditions générales du site web",
+      "grandTotal": "Total général:",
+      "placeOrder": "PASSER LA COMMANDE",
+      "processing": "TRAITEMENT EN COURS..."
+    },
+    "quote": {
+      "title": "Obtenez un devis gratuit",
+      "description": "Améliorez votre présence en ligne avec notre package numérique tout-en-un. Nous offrons une création de site web experte et une audience robuste efficacement.",
+      "namePlaceholder": "NOM...",
+      "emailPlaceholder": "EMAIL...",
+      "submitButton": "OBTENIR UN DEVIS GRATUIT",
+      "submitting": "ENVOI EN COURS..."
+    },
+    "messages": {
+      "orderSuccess": "Commande passée avec succès!",
+      "orderSuccessDescription": "Merci pour votre commande. Nous vous contacterons sous peu.",
+      "placeAnotherOrder": "Passer une autre commande",
+      "quoteSuccess": "Demande de devis soumise avec succès!",
+      "quoteSuccessDescription": "Nous vous contacterons sous peu avec votre devis gratuit.",
+      "error": "Erreur",
+      "fillRequiredFields": "Veuillez remplir tous les champs obligatoires",
+      "acceptTerms": "Veuillez accepter les termes et conditions"
+    }
+
+  },
+  "Hero": {
+    "premiumServices": "Services Premium",
+    "missionStart": "Notre Mission Est D'Améliorer Votre",
+    "business": "Entreprise",
+    "missionEnd": "Grâce À La Technologie",
+    "description": "Nous fournissons des solutions numériques de pointe qui transforment votre entreprise et génèrent des résultats exceptionnels.",
+    "seeBelow": "Voir Ci-Dessous"
+  },
+  "servicesSection": {
+    "ourServices": {
+      "prefix": "Nos",
+      "highlight": "Services"
+    },
+    "subtitle": "Des solutions numériques complètes adaptées pour élever votre entreprise vers de nouveaux sommets."
+  },
+  "services": {
+    "webDevelopment": {
+      "title": "Développement Web",
+      "description": "Sites web personnalisés construits avec les dernières technologies pour garantir un chargement rapide et des designs réactifs."
+    },
+    "branding": {
+      "title": "Image de Marque",
+      "description": "Création d'identités de marque mémorables et de visuels qui vous distinguent et créent la confiance avec votre public."
+    },
+    "communityManagement": {
+      "title": "Gestion de Communauté",
+      "description": "Engager et développer votre communauté en ligne pour créer la loyauté et renforcer la réputation de votre marque."
+    },
+    "seoOptimization": {
+      "title": "Optimisation SEO",
+      "description": "Améliorer votre classement dans les moteurs de recherche et générer du trafic organique vers votre site web."
+    }
   }
 
   

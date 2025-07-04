@@ -2,6 +2,7 @@ import { motion, useInView } from 'framer-motion';
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Globe, Shield, Zap, Headphones, ArrowRight } from 'lucide-react';
+import { Link, Links } from 'react-router-dom';
 
 export default function FeaturesGrid() {
   const {t} = useTranslation();
@@ -237,7 +238,8 @@ const features = [
         animate={inView ? "visible" : "hidden"}
       >
         {features.map((feature, index) => (
-          <motion.div
+          <Link to="/packThree">
+            <motion.div
             key={feature.id}
             className="group cursor-pointer"
             variants={cardVariants}
@@ -304,10 +306,12 @@ const features = [
               </div>
             </motion.div>
           </motion.div>
+          </Link>
         ))}
       </motion.div>
       
-      <motion.button 
+      <Link to="/packThree">
+          <motion.button 
         className="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white font-bold py-4 px-10 rounded-2xl mt-16 relative overflow-hidden group border border-gray-700"
         variants={buttonVariants}
         initial="hidden"
@@ -321,6 +325,7 @@ const features = [
         </span>
         <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </motion.button>
+      </Link>
     </div>
   );
 }

@@ -740,6 +740,97 @@
       "communityManagement": "Community Management",
       "seo": "SEO Optimization"
     }
+  } , 
+
+
+  "checkout": {
+    "title": "Checkout",
+    "description": "Complete your order for the {{service}} service you have chosen.",
+    "billingDetails": { 
+      "title": "Billing Details",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "company": "Company (Optional)",
+      "email": "Email",
+      "country": "Country",
+      "streetAddress": "Street Address",
+      "city": "City",
+      "state": "State",
+      "phone": "Phone",
+      "orderNotes": "Order Notes (Optional)",
+      "orderNotesPlaceholder": "Special notes for your order or delivery instructions",
+      "required": "*"
+    },
+    "orderReview": {
+      "title": "Order Review",
+      "service": "Service",
+      "qty": "Qty",
+      "total": "Total",
+      "estimatedDelivery": "Estimated Delivery",
+      "deliveryDescription": "Your project will be delivered within 2-3 weeks after order confirmation."
+    },
+    "payment": {
+      "title": "Payment methods",
+      "cashOnDelivery": "Cash on delivery",
+      "cashDescription": "Pay with cash upon delivery.",
+      "privacyText": "Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.",
+      "termsText": "I have read and agree to the website terms and conditions",
+      "grandTotal": "Grand Total:",
+      "placeOrder": "PLACE ORDER",
+      "processing": "PROCESSING..."
+    },
+    "quote": {
+      "title": "Get a free quote",
+      "description": "Elevate your online presence with our all-in-one digital package. We offer expert website creation and robust audience effectively.",
+      "namePlaceholder": "NAME...",
+      "emailPlaceholder": "EMAIL...",
+      "submitButton": "GET FREE QUOTE",
+      "submitting": "SUBMITTING..."
+    },
+    "messages": {
+      "orderSuccess": "Order placed successfully!",
+      "orderSuccessDescription": "Thank you for your order. We will contact you shortly.",
+      "placeAnotherOrder": "Place Another Order",
+      "quoteSuccess": "Quote request submitted successfully!",
+      "quoteSuccessDescription": "We will contact you shortly with your free quote.",
+      "error": "Error",
+      "fillRequiredFields": "Please fill in all required fields",
+      "acceptTerms": "Please accept the terms and conditions"
+    }
+  }
+  ,
+  "Hero": {
+    "premiumServices": "Premium Services",
+    "missionStart": "Our Mission Is To Make Your",
+    "business": "Business",
+    "missionEnd": "Better Through Technology",
+    "description": "We deliver cutting-edge digital solutions that transform your business and drive exceptional results.",
+    "seeBelow": "See Below"
+  },
+  "servicesSection": {
+    "ourServices": {
+      "prefix": "Our",
+      "highlight": "Services"
+    },
+    "subtitle": "Comprehensive digital solutions tailored to elevate your business to new heights."
+  },
+  "services": {
+    "webDevelopment": {
+      "title": "Web Development",
+      "description": "Custom websites built with the latest technologies to ensure fast loading, responsive designs."
+    },
+    "branding": {
+      "title": "Branding",
+      "description": "Crafting memorable brand identities and visuals that set you apart and build trust with your audience."
+    },
+    "communityManagement": {
+      "title": "Community Management",
+      "description": "Engaging and growing your online community to build loyalty and boost your brand's reputation."
+    },
+    "seoOptimization": {
+      "title": "SEO Optimization",
+      "description": "Improve your search engine rankings and drive organic traffic to your website."
+    }
   }
 
   

@@ -7,7 +7,8 @@ const contactRoutes = require('./routes/contact/contact.js');
 const quoteRouter = require("./routes/Quotes/quotes.js")
 const projectRoute = require("./routes/crud/getProject.js")
 const AuthRoute = require("./routes/authAdmin/auth.js");
-const OrdersRoute = require("./routes/crud/Orders.js")
+const OrdersRoute = require("./routes/crud/Orders.js");
+const ChatRouter = require("./routes/chatBot/chatRouter.js");
 
 const app = express();
 const PORT = process.env.PORT ;
@@ -22,6 +23,7 @@ app.use("/api/v3" , quoteRouter)
 app.use("/api/v4" , projectRoute)
 app.use("/api/v5" , AuthRoute);
 app.use("/api/v6" , OrdersRoute);
+app.use("/api/v7" , ChatRouter);
 
 db
 

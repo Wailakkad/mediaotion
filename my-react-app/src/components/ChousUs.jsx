@@ -2,13 +2,28 @@ import { useState, useEffect } from 'react';
 import { motion, useAnimation } from 'framer-motion';
 import { Users, LayoutDashboard, TrendingUp } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
 const WhyChooseUs = () => {
   const controls = useAnimation();
   const [ref, setRef] = useState(null);
+  
+  // Mock translation function for demo
+  const t = (key) => {
+    const translations = {
+      'whyChooseUs.title': 'Why Choose Us',
+      'whyChooseUs.features.tailored.title': 'Tailored Solutions',
+      'whyChooseUs.features.tailored.description': 'We create customized solutions that fit your specific business needs and requirements.',
+      'whyChooseUs.features.userFocused.title': 'User-Focused Design',
+      'whyChooseUs.features.userFocused.description': 'Our designs prioritize user experience, ensuring intuitive and engaging interfaces.',
+      'whyChooseUs.features.measurable.title': 'Measurable Results',
+      'whyChooseUs.features.measurable.description': 'We deliver solutions that provide clear, measurable improvements to your business metrics.',
+      'whyChooseUs.startNow': 'Start Now'
+    };
+    return translations[key] || key;
+  };
+  
+  // Mock navigate function for demo
   const navigate = useNavigate();
-  const { t } = useTranslation();
   
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -78,31 +93,37 @@ const WhyChooseUs = () => {
   };
 
   // Content for the cards
- const features = [
-  {
-    icon: <Users size={24} />,
-    title: t('whyChooseUs.features.tailored.title'),
-    description: t('whyChooseUs.features.tailored.description'),
-    bgColor: "bg-purple-50"
-  },
-  {
-    icon: <LayoutDashboard size={24} />,
-    title: t('whyChooseUs.features.userFocused.title'),
-    description: t('whyChooseUs.features.userFocused.description'),
-    bgColor: "bg-gray-50"
-  },
-  {
-    icon: <TrendingUp size={24} />,
-    title: t('whyChooseUs.features.measurable.title'),
-    description: t('whyChooseUs.features.measurable.description'),
-    bgColor: "bg-purple-50"
-  }
-];
+  const features = [
+    {
+      icon: <Users size={24} />,
+      title: t('whyChooseUs.features.tailored.title'),
+      description: t('whyChooseUs.features.tailored.description'),
+      bgColor: "bg-purple-50"
+    },
+    {
+      icon: <LayoutDashboard size={24} />,
+      title: t('whyChooseUs.features.userFocused.title'),
+      description: t('whyChooseUs.features.userFocused.description'),
+      bgColor: "bg-gray-50"
+    },
+    {
+      icon: <TrendingUp size={24} />,
+      title: t('whyChooseUs.features.measurable.title'),
+      description: t('whyChooseUs.features.measurable.description'),
+      bgColor: "bg-purple-50"
+    }
+  ];
+
+  const handleButtonClick = (e) => {
+    e.preventDefault();
+    
+    navigate("/packThree");
+  };
 
   return (
-    <div className="bg-white py-16 px-4 min-h-screen flex flex-col gap-20 items-center justify-center">
+    <div className="bg-white py-16 px-4 min-h-screen flex flex-col gap-20 items-center justify-center relative">
       <section 
-        className="max-w-7xl mx-auto w-full"
+        className="max-w-7xl mx-auto w-full relative z-10"
         ref={setRef}
       >
         {/* Section Title */}
@@ -112,7 +133,7 @@ const WhyChooseUs = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-         {t('whyChooseUs.title')}
+          {t('whyChooseUs.title')}
         </motion.h2>
 
         {/* Cards Container */}
@@ -125,7 +146,7 @@ const WhyChooseUs = () => {
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className={`rounded-2xl ${feature.bgColor} p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300`}
+              className={`rounded-2xl ${feature.bgColor} p-8 flex flex-col items-center text-center shadow-sm hover:shadow-md transition-shadow duration-300 relative z-10`}
               variants={itemVariants}
               whileHover={{ y: -5 }}
             >
@@ -152,10 +173,24 @@ const WhyChooseUs = () => {
             </motion.div>
           ))}
         </motion.div>
-
       </section>
-      <button onClick={()=> navigate("/packThree") } className='bg-black p-3 px-8 rounded-2xl text-white font-bold hover:bg-violet-800 transition duration-400 cursor-pointer'>{t('whyChooseUs.startNow')}</button>
 
+      {/* Fixed Button with proper z-index and event handling */}
+      <motion.button 
+        onClick={handleButtonClick}
+        className="bg-black p-3 px-8 rounded-2xl text-white font-bold hover:bg-violet-800 transition-colors duration-300 cursor-pointer relative z-20 transform hover:scale-105 active:scale-95"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        style={{
+          pointerEvents: 'auto',
+          userSelect: 'none'
+        }}
+      >
+        {t('whyChooseUs.startNow')}
+      </motion.button>
     </div>
   );
 };
